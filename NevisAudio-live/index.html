@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nevis Audio</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- 
+  <img src="imgs/decoration/TopLeftCurve.svg" class="decoration decoration__topLeft">
+  <img src="imgs/decoration/TopLeftCurve.svg" class="decoration decoration__topLeft decoration__glow">
+ -->
+  <section class="landing">
+    <img src="./imgs/logo/Nevis_logo.svg" alt="" class="logo">
+
+    <div class="container landing__content">
+      <div class="decorationContainer__mic"><img src="./imgs/decoration/mic-cutout.png" alt="" class="decoration__mic">
+      </div>
+      <h1 class="landing__bannerText" data-aos="fade-zoom-in" data-aos-duration="2000">MIXES THAT
+        <br />GET YOU <br class="mobile-break"><span class="landing__bannerText--featureWord">NOTICED</span></h1>
+      <span class="mainCTO">
+        <button class="btn__cto">Request a Free Mix Sample</button>
+      </span>
+      <svg viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+        class="landing__img--downarrow fade-in">
+        <path
+          d="M87.203,120.395C87.203,120.395 244.105,225.584 330.542,283.533C372.562,311.703 427.431,311.721 469.468,283.577C556.368,225.397 714.617,119.449 714.617,119.449C726.083,111.772 729.159,96.232 721.483,84.766C713.807,73.301 698.266,70.224 686.801,77.901C686.801,77.901 528.552,183.849 441.652,242.028C416.456,258.897 383.57,258.887 358.385,242.002C271.948,184.054 115.046,78.864 115.046,78.864C103.585,71.181 88.042,74.247 80.359,85.708C72.676,97.169 75.742,112.711 87.203,120.395Z" />
+        <g transform="matrix(1,0,0,1,-0.916571,201.325)">
+          <path
+            d="M87.203,120.395C87.203,120.395 244.105,225.584 330.542,283.533C372.562,311.703 427.431,311.721 469.468,283.577C556.368,225.397 714.617,119.449 714.617,119.449C726.083,111.772 729.159,96.232 721.483,84.766C713.807,73.301 698.266,70.224 686.801,77.901C686.801,77.901 528.552,183.849 441.652,242.028C416.456,258.897 383.57,258.887 358.385,242.002C271.948,184.054 115.046,78.864 115.046,78.864C103.585,71.181 88.042,74.247 80.359,85.708C72.676,97.169 75.742,112.711 87.203,120.395Z" />
+        </g>
+      </svg>
+
+    </div>
+    <!-- <div class="decorationContainer__right">
+      <img src="imgs/decoration/BottomRightCurve.svg" class="decoration decoration__bottomRight">
+      <img src="imgs/decoration/BottomRightCurve.svg" class="decoration decoration__bottomRight decoration__glow">
+    </div> -->
+  </section>
+  <section class="portfolio" data-aos="fade-up" data-aos-offset="200" data-aos-duration="600">
+    <div class="container section__feature">
+      <div class="player">
+        <h2 class="sectionHeader">Mix Portfolio</h2>
+        <div class="switches">
+          <button id="playerControls__button--playPause">
+            <img src="imgs/audioPlayer/playButton.svg" id="playerControls__play" />
+            <img src="imgs/audioPlayer/pauseButton.svg" id="playerControls__pause" class="noDisplay" />
+          </button>
+          <button id="playerControls__button--mix" class="mixButton">Hear Unmixed!</button>
+        </div>
+        <div id="playerControls">
+          <audio id="audioPlayer__mixed" preload="auto">
+            <source src="audioFiles/AndrewMcEwan-Wait[PopCountry].mp3" type="audio/mp3" id="audioPlayer__track" />
+          </audio>
+          <audio id="audioPlayer__unmixed" preload="auto" muted>
+            <source src="audioFiles/unmixed/wait.mp3" type="audio/mp3" id="audioPlayer__unmixedTrack" />
+          </audio>
+        </div>
+        <div class="playerTracks">
+          <button class="trackSelector trackSelector__active" id="track1">
+            Andrew McEwan - Wait [Pop Country]
+          </button>
+          <hr>
+          <button class="trackSelector" id="track2">
+            de Villiers - Fatally Brute [Indie Rock]
+          </button>
+          <hr>
+          <button class="trackSelector" id="track3">
+            Foxchase - Dare [Pop Rock]
+          </button>
+          <hr>
+          <button class="trackSelector" id="track4">
+            Palantir - I Like Creepy [Rock]
+          </button>
+          <hr>
+          <div class="albumArt albumArt__Track5">
+            <button class="trackSelector" id="track5">
+              Rivia - Hello Stranger[Rock]
+            </button>
+            <hr>
+            <button class="trackSelector" id="track6">
+              Tidesetter - WTG [Rock]
+            </button>
+            <!-- <button class="trackSelector" id="track7">
+            Vic Tayla - Fade [Pop]
+          </button> -->
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="plan">
+    <div class="decorationContainer__plan" data-aos="fade-zoom-in" data-aos-delay="1000" data-aos-duration="800">
+      <img src="imgs/decoration/stepsCurve.svg" class="decoration decoration__plan">
+      <img src="imgs/decoration/stepsCurve.svg" class="decoration decoration__plan decoration__glow">
+    </div>
+    <div class="container">
+      <h2 class="sectionHeader">The Pro Sound Plan</h2>
+      <div class="steps">
+        <div class="card steps__step1" data-aos="fade-up" data-aos-duration="600">
+          <div class="card card__inner">
+            <h3>Step 1</h3>
+            <p>Get In Touch.</p>
+            <button class="btn__cto">Free Mix Sample</button>
+          </div>
+        </div>
+        <div class="card steps__step2" data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
+          <div class="card card__inner">
+            <h3>Step 2</h3>
+            <p>
+              We'll discuss how to send over your song for a Free Mix Sample.
+            </p>
+          </div>
+        </div>
+        <div class="card steps__step3" data-aos="fade-up" data-aos-delay="500" data-aos-duration="600">
+          <div class="card card__inner">
+            <h3>Step 3</h3>
+            <p>You'll receive your Free Mix Sample within 1 week.</p>
+            <p>Let's make your best song yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section class="about">
+    <div class="container section__feature" data-aos="fade-up" data-aos-offset="200" data-aos-duration="600">
+      <div class="container__subcontainer">
+        <div class="about__text">
+          <h2 class="sectionHeader">About Nevis</h2>
+          <p class="about__text--info text__highlight">
+            Hi, I'm Joe Sage and I'm the mix engineer at the helm of Nevis
+            Audio.
+          </p>
+          <p class="about__text--info">
+            I help musicians get their music noticed, by providing them with
+            professional-sounding mixes for their songs, that make them stand
+            out from the crowd.
+          </p>
+          <p class="about__text--info">
+            Learning my trade by engineering for some of the UK's best producers
+            and I will provide the same professional quality sound for your
+            tracks.
+          </p>
+          <p class="about__text--info">
+            I have worked with artists from all over Europe and America to help
+            them develop their sound and maximize their potential. I can help
+            deliver those same results for your career.
+          </p>
+          <button class="btn__cto">Request a free Mix Sample</button>
+        </div>
+        <div class="about__image">
+          <img class="about__image--joe" src="imgs/people/JOE.jpg" alt="Joe" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials" data-aos="fade-up" data-aos-offset="200" data-aos-duration="600">
+    <div class="container">
+      <!-- <h2 class="sectionHeader">Testimonials</h2> -->
+      <div class="testimonials__cards">
+        <div class="card">
+          <img src="./imgs/people/Testamonial_jade.jpg" alt="Sorella" class="card__img" />
+          <h3 class="card__header">Sorella Sound</h3>
+          <p class="quote">
+            When doing research into who we wanted to mix our song, we were
+            initially concerned about finding the right person for our piece.
+            However, after hearing the mix Joe provided for us, we learnt
+            there was no need to worry. The mix Joe provided truly brought our
+            piece to life.
+          </p>
+          <p class="quotemarks">”</p>
+        </div>
+        <div class="card">
+          <img src="./imgs/people/Testamonial_McEwan.png" alt="McEwan" class="card__img" />
+          <h3 class="card__header">Andrew McEwan</h3>
+          <p class="quote">
+            The band and I had such a great experience working with Joe. He
+            really did go the extra mile. That's what you want as a
+            songwriter, and he put the care and attention in throughout the
+            process. That is why I'm looking forward to working with Joe again
+            on my next recording.
+          </p>
+          <p class="quotemarks">”</p>
+        </div>
+        <div class="card">
+          <img src="./imgs/people/Testamonial_Taboos.jpg" alt="Taboos" class="card__img" />
+          <h3 class="card__header">The Taboos</h3>
+          <p class="quote">
+            We’d never hired a mix engineer remotely before but we found Joe
+            to have a friendly and professional nature, as well as being
+            really easy to work with. Joe gave us a much crispier, tighter
+            sound with a perfect level of polish.
+          </p>
+          <p class="quotemarks">”</p>
+        </div>
+      </div>
+      <div class="endButton">
+        <button class="btn__cto ending">Request a free Mix Sample</button>
+      </div>
+    </div>
+  </section>
+  <script src="js/aos.js"></script>
+  <script src="js/playerScript.js"></script>
+  <script>
+    AOS.init({
+      disable: 'phone'
+    });
+  </script>
+</body>
+
+</html>
