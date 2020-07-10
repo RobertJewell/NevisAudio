@@ -23,11 +23,13 @@ let pauseButton = document.getElementById("playerControls__pause");
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
+  audioPlayer.currentTime = audioPlayer2.currentTime;
   playPauseTrack();
 });
 
 mixButton.addEventListener("click", function () {
   if (isMixed() == true) {
+    audioPlayer.currentTime = audioPlayer2.currentTime;
     mixButton.textContent = 'Hear Mixed!'
     audioPlayer2.muted = false
     audioPlayer.muted = true
