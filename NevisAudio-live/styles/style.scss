@@ -241,11 +241,12 @@ button {
   position: absolute;
   display: none;
   height: 900px;
-  overflow: hidden;
+  width: auto;
+  // overflow: hidden;
   z-index: -1;
   @include for-tablet-portrait-up() {
     display: block;
-    right: -100px;
+    right: -50px;
     bottom: 0;
   }
 }

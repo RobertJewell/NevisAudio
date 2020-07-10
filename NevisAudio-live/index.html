@@ -19,7 +19,13 @@
     <img src="./imgs/logo/Nevis_logo.svg" alt="" class="logo">
 
     <div class="container landing__content">
-      <div class="decorationContainer__mic"><img src="./imgs/decoration/mic-cutout.png" alt="" class="decoration__mic">
+      <div class="decorationContainer__mic">
+        <picture class="decoration__mic">
+          <source type="image/webp" srcset="./imgs/decoration/mic-cutout.webp">
+          <source type="image/png" srcset="./imgs/decoration/mic-cutout.png">
+          <!-- <img src="images/flower1.jpg"> -->
+          <img src="./imgs/decoration/mic-cutout.png" alt="" class="decoration__mic">
+        </picture>
       </div>
       <h1 class="landing__bannerText" data-aos="fade-zoom-in" data-aos-duration="2000">MIXES THAT
         <br />GET YOU <br class="mobile-break"><span class="landing__bannerText--featureWord">NOTICED</span></h1>

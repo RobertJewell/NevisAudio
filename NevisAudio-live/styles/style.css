@@ -199,14 +199,14 @@ button {
   position: absolute;
   display: none;
   height: 900px;
-  overflow: hidden;
+  width: auto;
   z-index: -1;
 }
 
 @media (min-width: 640px) {
   .decoration__mic {
     display: block;
-    right: -100px;
+    right: -50px;
     bottom: 0;
   }
 }
