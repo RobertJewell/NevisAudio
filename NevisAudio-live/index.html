@@ -189,7 +189,7 @@
             there was no need to worry. The mix Joe provided truly brought our
             piece to life.
           </p>
-          <p class="quotemarks">”</p>
+          <p class="quotemarks">"</p>
         </div>
         <div class="card">
           <picture class="card__img">
@@ -205,7 +205,7 @@
             process. That is why I'm looking forward to working with Joe again
             on my next recording.
           </p>
-          <p class="quotemarks">”</p>
+          <p class="quotemarks">"</p>
         </div>
         <div class="card">
           <picture class="card__img">
@@ -220,7 +220,7 @@
             really easy to work with. Joe gave us a much crispier, tighter
             sound with a perfect level of polish.
           </p>
-          <p class="quotemarks">”</p>
+          <p class="quotemarks">"</p>
         </div>
       </div>
       <div class="endButton">
@@ -231,12 +231,16 @@
   <section class="modal" id="modal">
     <button data-close-button class="close-button">&times;</button>
     <div class="modal-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quod alias ut illo doloremque eum ipsum obcaecati
-      distinctio debitis reiciendis quae quia soluta totam doloribus quos nesciunt necessitatibus, consectetur quisquam
-      accusamus ex, dolorum, dicta vel? Nostrum voluptatem totam, molestiae rem at ad autem dolor ex aperiam. Amet
-      assumenda eos architecto, dolor placeat deserunt voluptatibus tenetur sint officiis perferendis atque! Voluptatem
-      maxime eius eum dolorem dolor exercitationem quis iusto totam! Repudiandae nobis nesciunt sequi iure! Eligendi,
-      eius libero. Ex, repellat sapiente!
+      <form method="post" name="contact_form" action="contact-form-handler.php"> Your Name: <input type="text"
+          name="name"> Email Address:
+
+        <input type="text" name="email"> Message:
+
+        <textarea name="message"></textarea>
+
+        <input type="submit" value="Submit">
+
+      </form>
     </div>
   </section>
   <div id="overlay"></div>
@@ -248,6 +252,8 @@
     });
   </script>
   <script src="js/modal.js"></script>
+  <script src="js/formValidator.js"></script>
+
 </body>
 
 </html>
