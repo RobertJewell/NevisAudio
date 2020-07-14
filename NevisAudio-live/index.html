@@ -29,7 +29,7 @@
       <h1 class="landing__bannerText" data-aos="fade-zoom-in" data-aos-duration="2000">MIXES THAT
         <br />GET YOU <br class="mobile-break"><span class="landing__bannerText--featureWord">NOTICED</span></h1>
       <span class="mainCTO">
-        <button class="btn__cto">Request a Free Mix Sample</button>
+        <button data-modal-target="#modal" class="btn__cto">Request a Free Mix Sample</button>
       </span>
       <svg viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
@@ -112,7 +112,7 @@
           <div class="card card__inner">
             <h3>Step 1</h3>
             <p>Get In Touch.</p>
-            <button class="btn__cto">Free Mix Sample</button>
+            <button data-modal-target="#modal" class="btn__cto">Free Mix Sample</button>
           </div>
         </div>
         <div class="card steps__step2" data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
@@ -158,7 +158,7 @@
             them develop their sound and maximize their potential. I can help
             deliver those same results for your career.
           </p>
-          <button class="btn__cto">Request a free Mix Sample</button>
+          <button data-modal-target="#modal" class="btn__cto">Request a free Mix Sample</button>
         </div>
         <div class="about__image">
           <picture class="about__image--joe">
@@ -224,10 +224,22 @@
         </div>
       </div>
       <div class="endButton">
-        <button class="btn__cto ending">Request a free Mix Sample</button>
+        <button data-modal-target="#modal" class="btn__cto ending">Request a free Mix Sample</button>
       </div>
     </div>
   </section>
+  <section class="modal" id="modal">
+    <button data-close-button class="close-button">&times;</button>
+    <div class="modal-body">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quod alias ut illo doloremque eum ipsum obcaecati
+      distinctio debitis reiciendis quae quia soluta totam doloribus quos nesciunt necessitatibus, consectetur quisquam
+      accusamus ex, dolorum, dicta vel? Nostrum voluptatem totam, molestiae rem at ad autem dolor ex aperiam. Amet
+      assumenda eos architecto, dolor placeat deserunt voluptatibus tenetur sint officiis perferendis atque! Voluptatem
+      maxime eius eum dolorem dolor exercitationem quis iusto totam! Repudiandae nobis nesciunt sequi iure! Eligendi,
+      eius libero. Ex, repellat sapiente!
+    </div>
+  </section>
+  <div id="overlay"></div>
   <script src="js/aos.js"></script>
   <script src="js/playerScript.js"></script>
   <script>
@@ -235,6 +247,7 @@
       disable: 'phone'
     });
   </script>
+  <script src="js/modal.js"></script>
 </body>
 
 </html>

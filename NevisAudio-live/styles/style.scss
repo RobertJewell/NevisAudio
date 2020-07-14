@@ -173,6 +173,8 @@ button {
   font-size: 0.8rem;
   transition: background-color ease-in-out 150ms;
   margin: 1rem 0;
+  box-shadow: 0 35px 35px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.07);
+
 }
 
 .btn__cto:hover {
@@ -668,10 +670,63 @@ hr {
   max-height: 200px;
   border-radius: 200px;
   margin-bottom: 2rem;
+  box-shadow: 0 35px 35px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.07);
+
 }
 
 .quotemarks {
   color: $main-accent-color;
   font-size: 4rem;
   text-align: end;
+}
+
+//Modal
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  float: right;
+}
+
+.modal-body {
+  padding: 10px 15px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }
