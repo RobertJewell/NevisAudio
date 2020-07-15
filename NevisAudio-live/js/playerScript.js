@@ -24,26 +24,26 @@ playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
   audioPlayer.currentTime = audioPlayer2.currentTime;
+  console.log(audioPlayer.currentTime);
   playPauseTrack();
 });
 
 mixButton.addEventListener("click", function () {
   if (isMixed() == true) {
     audioPlayer.currentTime = audioPlayer2.currentTime;
-    mixButton.textContent = 'Hear Mixed!'
-    audioPlayer2.muted = false
-    audioPlayer.muted = true
-
-  }
-  else {
-    mixButton.textContent = 'Hear Unmixed!'
-    audioPlayer2.muted = true
-    audioPlayer.muted = false
+    mixButton.textContent = "Hear Mixed!";
+    audioPlayer2.muted = false;
+    audioPlayer.muted = true;
+  } else {
+    mixButton.textContent = "Hear Unmixed!";
+    audioPlayer2.currentTime = audioPlayer2.currentTime;
+    audioPlayer2.muted = true;
+    audioPlayer.muted = false;
   }
 });
 
 //reset play/pause on track end
-audioPlayer.addEventListener("ended", resetPlayPause())
+audioPlayer.addEventListener("ended", resetPlayPause());
 
 makeTracksClickable();
 
@@ -58,18 +58,16 @@ function resetPlayPause() {
 //play pause audio
 function playPauseTrack() {
   if (playButton.classList.contains("noDisplay")) {
-    audioPlayer.play()
-    audioPlayer2.play()
-  }
-  else {
-    audioPlayer.pause()
-    audioPlayer2.pause()
+    audioPlayer.play();
+    audioPlayer2.play();
+  } else {
+    audioPlayer.pause();
+    audioPlayer2.pause();
   }
 }
 
 function isMixed() {
-  if ((mixButton.textContent == "Hear Unmixed!")) {
-    console.log("woo");
+  if (mixButton.textContent == "Hear Unmixed!") {
     return true;
   }
   return false;
@@ -97,5 +95,3 @@ function resetSelectedTrack(arr) {
     arr[i].classList.remove("trackSelector__active");
   }
 }
-
-
