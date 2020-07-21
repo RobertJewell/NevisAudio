@@ -240,11 +240,14 @@
   <section class="modal" id="modal">
     <button data-close-button class="close-button">&times;</button>
     <div class="modal-body">
-      <form method="post" name="contact_form" action="contact-form-handler.php"> Your Name: <input type="text"
-          name="name"> Email Address:
+      <form method="post" name="contact_form" action="contact-form-handler.php"> 
+        Your Name: 
+        <input type="text" name="name" class="inputBox inputBox__short"> 
 
-        <input type="text" name="email"> Message:
-
+        Email Address:
+        <input type="text" name="email" class="inputBox inputBox__short"> 
+        
+        Message:
         <textarea name="message"></textarea>
 
         <input type="submit" value="Submit">
