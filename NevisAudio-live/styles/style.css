@@ -821,11 +821,13 @@ hr {
   background: none;
   font-size: 1.25rem;
   font-weight: bold;
-  float: right;
+  color: #fcfbf7;
+  position: absolute;
+  right: 0;
 }
 
 .modal-body {
-  padding: 10px 15px;
+  padding: 1rem 2rem;
 }
 
 #overlay {
@@ -856,9 +858,48 @@ form {
           flex-direction: column;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #fcfbf7;
+  -webkit-box-shadow: 0 0 0px 1000px #0b0f16 inset;
+  box-shadow: 0 0 0px 1000px #0b0f16 inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .inputBox {
   background-color: #0b0f16;
-  padding: 6px;
+  padding: 10px;
   color: #fcfbf7;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.inputBox__message {
+  resize: none;
+  height: 6rem;
+  font-family: "Montserrat", serif;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.inputLabel {
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.inputButton {
+  border-radius: 3rem;
+  border: 2px solid darkorange;
 }
 /*# sourceMappingURL=style.css.map */
