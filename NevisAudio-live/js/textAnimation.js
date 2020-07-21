@@ -23,7 +23,3 @@ function textChange(word) {
     console.log("1");
   }, 800);
 }
-
-function ChangeWords(word) {
-  changeWord.setAttribute("data-content", `{$word}`);
-}
