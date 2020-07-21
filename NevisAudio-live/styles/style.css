@@ -353,6 +353,10 @@ button {
   top: 1rem;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .landing__img--downarrow {
   fill: darkorange;
   height: 3rem;
