@@ -24,23 +24,23 @@ playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
   audioPlayer.currentTime = audioPlayer2.currentTime;
-  console.log(audioPlayer.currentTime, audioPlayer2.currentTime)
+  console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
   playPauseTrack();
 });
 
 mixButton.addEventListener("click", function () {
   if (isMixed() == true) {
-    audioPlayer.currentTime = audioPlayer2.currentTime;
-    mixButton.textContent = "Hear Mixed!";
-    console.log(audioPlayer.currentTime, audioPlayer2.currentTime)
+    audioPlayer2.currentTime = audioPlayer.currentTime;
+    // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
     audioPlayer2.muted = false;
     audioPlayer.muted = true;
+    mixButton.textContent = "Hear Mixed!";
   } else {
-    mixButton.textContent = "Hear Unmixed!";
-    audioPlayer2.currentTime = audioPlayer.currentTime;
-    console.log(audioPlayer.currentTime, audioPlayer2.currentTime)
+    audioPlayer.currentTime = audioPlayer2.currentTime;
+    // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
     audioPlayer2.muted = true;
     audioPlayer.muted = false;
+    mixButton.textContent = "Hear Unmixed!";
   }
 });
 
