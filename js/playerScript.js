@@ -24,21 +24,23 @@ let progress = document.getElementById("progressBar");
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
-  audioPlayer.currentTime = audioPlayer2.currentTime;
+  let currentTimeReference = audioPlayer.currentTime
+  audioPlayer.currentTime = currentTimeReference;
+  audioPlayer2.currentTime = currentTimeReference;
   // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
+  setInterval(updateProgressBar, 100)
   playPauseTrack();
 });
 
 mixButton.addEventListener("click", function () {
   if (isMixed() == true) {
-    audioPlayer2.currentTime = audioPlayer.currentTime;
-    // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
+    // audioPlayer2.currentTime = audioPlayer.currentTime;
+    console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
     audioPlayer2.muted = false;
     audioPlayer.muted = true;
     mixButton.textContent = "Hear Mixed!";
   } else {
-    audioPlayer.currentTime = audioPlayer2.currentTime;
-    // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
+    // audioPlayer2.currentTime = audioPlayer.currentTime;
     audioPlayer2.muted = true;
     audioPlayer.muted = false;
     mixButton.textContent = "Hear Unmixed!";
@@ -56,6 +58,7 @@ makeTracksClickable();
 function resetPlayPause() {
   playButton.classList.remove("noDisplay");
   pauseButton.classList.add("noDisplay");
+  progress.style.width = "0%"
 }
 
 //play pause audio
@@ -75,6 +78,17 @@ function isMixed() {
   }
   return false;
 }
+
+
+
+function updateProgressBar() {
+  let progressvalue = ((audioPlayer.currentTime / audioPlayer.duration) * 100).toString()
+  let progressValuePercent = progressvalue.concat("%")
+  progress.style.width = progressValuePercent;
+}
+
+
+
 
 //track selector
 function makeTracksClickable() {

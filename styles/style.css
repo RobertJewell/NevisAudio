@@ -921,6 +921,7 @@ select:-webkit-autofill:focus {
   position: absolute;
   left: 0;
   overflow: hidden;
+  transition: width none 100ms;
 }
 
 .progressBar__playtimeBG {
