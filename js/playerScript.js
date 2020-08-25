@@ -18,13 +18,14 @@ let playPause = document.getElementById("playerControls__button--playPause");
 let mixButton = document.getElementById("playerControls__button--mix");
 let playButton = document.getElementById("playerControls__play");
 let pauseButton = document.getElementById("playerControls__pause");
+let progress = document.getElementById("progressBar");
 
 //Toggle play pause state
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
   audioPlayer.currentTime = audioPlayer2.currentTime;
-  console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
+  // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
   playPauseTrack();
 });
 
