@@ -20,6 +20,5 @@ function textChange(word) {
   }, 400);
   setTimeout(() => {
     changeWord.style.opacity = 1;
-    console.log("1");
   }, 800);
 }
