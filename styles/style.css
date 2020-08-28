@@ -202,6 +202,10 @@ button {
   height: 900px;
   width: auto;
   z-index: -1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 @media (min-width: 640px) {
@@ -323,6 +327,10 @@ button {
   opacity: 0;
   -webkit-transition: opacity 400ms;
   transition: opacity 400ms;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 @media (max-width: 599px) {
@@ -347,6 +355,10 @@ button {
   opacity: 0.3;
   -webkit-filter: blur(60px);
           filter: blur(60px);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .mainCTO {
@@ -903,14 +915,13 @@ select:-webkit-autofill:focus {
   border-radius: 3rem;
   border: 2px solid darkorange;
 }
-/*# sourceMappingURL=style.css.map */
-
 
 .progressBar {
   position: relative;
   height: 3px;
   background-color: white;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .progressBar__playtime {
@@ -921,16 +932,16 @@ select:-webkit-autofill:focus {
   position: absolute;
   left: 0;
   overflow: hidden;
-  transition: width none 100ms;
 }
 
 .progressBar__playtimeBG {
   height: 3px;
   /* update to adapt to screen size changes */
-  width: 512px;
+  width: 720px;
   background-image: -webkit-gradient(linear, left top, right top, from(#c04ffc), color-stop(25%, #ff48b8), color-stop(50%, #ff385d), color-stop(75%, #ff573d), to(#fb9a41));
   background-image: linear-gradient(90deg, #c04ffc 0%, #ff48b8 25%, #ff385d 50%, #ff573d 75%, #fb9a41 100%);
   border-radius: 3px;
   position: absolute;
   left: 0;
 }
+/*# sourceMappingURL=style.css.map */

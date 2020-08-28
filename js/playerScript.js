@@ -19,28 +19,25 @@ let mixButton = document.getElementById("playerControls__button--mix");
 let playButton = document.getElementById("playerControls__play");
 let pauseButton = document.getElementById("playerControls__pause");
 let progress = document.getElementById("progressBar");
+let progressLoop
 
 //Toggle play pause state
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
-  let currentTimeReference = audioPlayer.currentTime
-  audioPlayer.currentTime = currentTimeReference;
-  audioPlayer2.currentTime = currentTimeReference;
-  // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
-  setInterval(updateProgressBar, 100)
+  syncAudio()
   playPauseTrack();
 });
 
+
+//Mix button
 mixButton.addEventListener("click", function () {
+  syncAdjust()
   if (isMixed() == true) {
-    // audioPlayer2.currentTime = audioPlayer.currentTime;
-    console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
     audioPlayer2.muted = false;
     audioPlayer.muted = true;
     mixButton.textContent = "Hear Mixed!";
   } else {
-    // audioPlayer2.currentTime = audioPlayer.currentTime;
     audioPlayer2.muted = true;
     audioPlayer.muted = false;
     mixButton.textContent = "Hear Unmixed!";
@@ -52,7 +49,12 @@ audioPlayer.addEventListener("ended", resetPlayPause());
 
 makeTracksClickable();
 
-//Functions
+
+/* 
+----------------
+FUNCTIONS
+----------------
+*/
 
 //reset button on track select
 function resetPlayPause() {
@@ -66,12 +68,15 @@ function playPauseTrack() {
   if (playButton.classList.contains("noDisplay")) {
     audioPlayer.play();
     audioPlayer2.play();
+    progressLoop = setInterval(updateProgressBar, 64)
   } else {
     audioPlayer.pause();
     audioPlayer2.pause();
+    clearInterval(progressLoop)
   }
 }
 
+//Check state of mix button
 function isMixed() {
   if (mixButton.textContent == "Hear Unmixed!") {
     return true;
@@ -79,11 +84,32 @@ function isMixed() {
   return false;
 }
 
+//check audio sync
+function checkSync() {
+  return (Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime))
+}
+
+//sync audio (introduces small delay)
+function syncAudio() {
+  let currentTimeReference = audioPlayer.currentTime
+  audioPlayer.currentTime = currentTimeReference;
+  audioPlayer2.currentTime = currentTimeReference;
+}
+
+// check audio sync then adjust sync
+function syncAdjust() {
+  if (checkSync() > 0.5) {
+    syncAudio()
+  }
+}
 
 
+
+// update css postion of the progress bar
 function updateProgressBar() {
   let progressvalue = ((audioPlayer.currentTime / audioPlayer.duration) * 100).toString()
   let progressValuePercent = progressvalue.concat("%")
+  console.log(progressValuePercent)
   progress.style.width = progressValuePercent;
 }
 
