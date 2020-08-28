@@ -9,6 +9,8 @@ let audioFiles = {
   // track7: "audioFiles/VicTayla-Fade[Pop].mp3",
 };
 
+
+//variables
 let collectTracks = document.getElementsByClassName("trackSelector");
 let trackList = [...collectTracks];
 let audioPlayer = document.getElementById("audioPlayer__mixed");
@@ -18,8 +20,17 @@ let playPause = document.getElementById("playerControls__button--playPause");
 let mixButton = document.getElementById("playerControls__button--mix");
 let playButton = document.getElementById("playerControls__play");
 let pauseButton = document.getElementById("playerControls__pause");
-let progress = document.getElementById("progressBar");
+let progress = document.getElementById("progressBar")
+let progressContainer = document.getElementById("progressBar--container")
 let progressLoop
+
+
+/* 
+----------------
+EVENT LISTENERS
+---------------- 
+*/
+
 
 //Toggle play pause state
 playPause.addEventListener("click", function () {
@@ -45,7 +56,30 @@ mixButton.addEventListener("click", function () {
 });
 
 //reset play/pause on track end
-audioPlayer.addEventListener("ended", resetPlayPause());
+audioPlayer.addEventListener("ended", function () {
+  playButton.classList.remove("noDisplay");
+  pauseButton.classList.add("noDisplay");
+  audioPlayer.currentTime = 0;
+  audioPlayer2.currentTime = 0;
+  progress.style.width = "0%"
+});
+
+// move track position
+progressContainer.addEventListener("click", function (e) {
+  let clickPosition = (e.offsetX / e.target.clientWidth)
+  audioPlayer.currentTime = (clickPosition * audioPlayer.duration);
+  audioPlayer2.currentTime = (clickPosition * audioPlayer.duration);
+  updateProgressBar()
+})
+
+
+
+
+/* 
+----------------
+EVENT LISTENER LOOP
+----------------
+*/
 
 makeTracksClickable();
 
@@ -61,6 +95,7 @@ function resetPlayPause() {
   playButton.classList.remove("noDisplay");
   pauseButton.classList.add("noDisplay");
   progress.style.width = "0%"
+  console.log("test")
 }
 
 //play pause audio
@@ -109,7 +144,6 @@ function syncAdjust() {
 function updateProgressBar() {
   let progressvalue = ((audioPlayer.currentTime / audioPlayer.duration) * 100).toString()
   let progressValuePercent = progressvalue.concat("%")
-  console.log(progressValuePercent)
   progress.style.width = progressValuePercent;
 }
 

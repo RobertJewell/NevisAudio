@@ -69,9 +69,11 @@
           </button>
           <button id="playerControls__button--mix" class="mixButton">Hear Unmixed!</button>
         </div>
-        <div class="progressBar">
-          <div class="progressBar__playtime" id="progressBar">
-            <div class="progressBar__playtimeBG"></div>
+        <div class="progressBar--container" id="progressBar--container">
+          <div class="progressBar">
+            <div class="progressBar__playtime" id="progressBar">
+              <div class="progressBar__playtimeBG"></div>
+            </div>
           </div>
         </div>
         <div id="playerControls">
@@ -116,8 +118,9 @@
   </section>
   <section class="plan">
     <div class="decorationContainer__plan" data-aos="fade-zoom-in" data-aos-delay="1000" data-aos-duration="800">
-      <img src="imgs/decoration/stepsCurve.svg" class="decoration decoration__plan" alt="decorationLines">
-      <img src="imgs/decoration/stepsCurve.svg" class="decoration decoration__plan decoration__glow"
+      <img src="imgs/decoration/stepsCurve.svg" loading="lazy" class="decoration decoration__plan"
+        alt="decorationLines">
+      <img src="imgs/decoration/stepsCurve.svg" loading="lazy" class="decoration decoration__plan decoration__glow"
         alt="decorationLines">
     </div>
     <div class="container">
@@ -176,7 +179,7 @@
           <button data-modal-target="#modal" class="btn__cto">Request a free Mix Sample</button>
         </div>
         <div class="about__image">
-          <picture class="about__image--joe">
+          <picture loading="lazy" class="about__image--joe">
             <source type="image/webp" srcset="imgs/people/JOE.webp">
             <source type="image/jpg" srcset="imgs/people/JOE.jpg">
             <img class="about__image--joe" src="imgs/people/JOE.jpg" alt="Joe" />
@@ -190,7 +193,7 @@
       <h2 class="sectionHeader">Testimonials</h2>
       <div class="testimonials__cards">
         <div class="card">
-          <picture class="card__img">
+          <picture loading="lazy" class="card__img">
             <source type="image/webp" srcset="./imgs/people/Testamonial_jade.webp">
             <source type="image/jpg" srcset="./imgs/people/Testamonial_jade.jpg">
             <img src="./imgs/people/Testamonial_jade.jpg" alt="Sorella" class="card__img" />
@@ -207,7 +210,7 @@
           <p class="quotemarks">"</p>
         </div>
         <div class="card">
-          <picture class="card__img">
+          <picture class="card__img" loading="lazy">
             <source type="image/webp" srcset="./imgs/people/Testamonial_McEwan.webp">
             <source type="image/jpg" srcset="./imgs/people/Testamonial_McEwan.png">
             <img src="./imgs/people/Testamonial_McEwan.png" alt="McEwan" class="card__img" />
@@ -223,7 +226,7 @@
           <p class="quotemarks">"</p>
         </div>
         <div class="card">
-          <picture class="card__img">
+          <picture class="card__img" loading="lazy">
             <source type="image/webp" srcset="./imgs/people/Testamonial_Taboos.webp">
             <source type="image/jpg" srcset="./imgs/people/Testamonial_Taboos.jpg">
             <img src="./imgs/people/Testamonial_Taboos.jpg" alt="Taboos" class="card__img" />
