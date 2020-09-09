@@ -1,29 +1,47 @@
 /* All tracks object */
 let audioFiles = {
-  track1: "audioFiles/AndrewMcEwan-Wait[PopCountry].mp3",
-  track2: "audioFiles/deVilliers-FatallyBrute[IndieRock].mp3",
-  track3: "audioFiles/Foxchase-Dare[PopRock].mp3",
-  track4: "audioFiles/Palantir-ILikeCreepy[Rock].mp3",
-  track5: "audioFiles/Rivia-HelloStranger[Rock].mp3",
-  track6: "audioFiles/Tidesetter-WTG[Rock].mp3",
-  // track7: "audioFiles/VicTayla-Fade[Pop].mp3",
+  track1: "audioFiles/mixed/andrew_mcEwan--wait--mixed.mp3",
+  track2: "audioFiles/mixed/beefywink--feel_me--mixed.mp3",
+  track3: "audioFiles/mixed/fallen_house--i_disappear--mixed.mp3",
+  track4: "audioFiles/mixed/the_taboos--innovative_thinking--mixed.mp3",
 };
 
+let audioFilesUnmixed = {
+  track1: "audioFiles/mixed/andrew_mcEwan--wait--mixed.mp3",
+  track2: "audioFiles/unmixed/beefywink--feel_me--unmixed.mp3",
+  track3: "audioFiles/unmixed/fallen_house--i_disappear--unmixed.mp3",
+  track4: "audioFiles/unmixed/the_taboos--innovative_thinking--unmixed.mp3",
+};
 
-//variables
+/* 
+----------------
+VARIABLES
+---------------- 
+*/
+
+//Pull the list of tracks from the DOM
 let collectTracks = document.getElementsByClassName("trackSelector");
+//Make that tracklist iterable
 let trackList = [...collectTracks];
+
+//Audio Players
 let audioPlayer = document.getElementById("audioPlayer__mixed");
 let audioPlayer2 = document.getElementById("audioPlayer__unmixed");
+
+//Audio Source
 let audioSource = document.getElementById("audioPlayer__track");
+let audioSource2 = document.getElementById("audioPlayer__unmixedTrack");
+
+//Player contols
 let playPause = document.getElementById("playerControls__button--playPause");
 let mixButton = document.getElementById("playerControls__button--mix");
 let playButton = document.getElementById("playerControls__play");
 let pauseButton = document.getElementById("playerControls__pause");
-let progress = document.getElementById("progressBar")
-let progressContainer = document.getElementById("progressBar--container")
-let progressLoop
 
+//Progress Bar
+let progress = document.getElementById("progressBar");
+let progressContainer = document.getElementById("progressBar--container");
+let progressLoop;
 
 /* 
 ----------------
@@ -31,19 +49,17 @@ EVENT LISTENERS
 ---------------- 
 */
 
-
 //Toggle play pause state
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
-  syncAudio()
+  syncAudio();
   playPauseTrack();
 });
 
-
 //Mix button
 mixButton.addEventListener("click", function () {
-  syncAdjust()
+  syncAdjust();
   if (isMixed() == true) {
     audioPlayer2.muted = false;
     audioPlayer.muted = true;
@@ -61,19 +77,18 @@ audioPlayer.addEventListener("ended", function () {
   pauseButton.classList.add("noDisplay");
   audioPlayer.currentTime = 0;
   audioPlayer2.currentTime = 0;
-  progress.style.width = "0%"
+  progress.style.width = "0%";
 });
 
 // move track position
 progressContainer.addEventListener("click", function (e) {
-  let clickPosition = (e.offsetX / e.target.clientWidth)
-  audioPlayer.currentTime = (clickPosition * audioPlayer.duration);
-  audioPlayer2.currentTime = (clickPosition * audioPlayer.duration);
-  updateProgressBar()
-})
-
-
-
+  let clickPosition = e.offsetX / e.target.clientWidth;
+  let clickPositionTimecode = clickPosition * audioPlayer.duration;
+  audioPlayer.currentTime = clickPositionTimecode;
+  audioPlayer2.currentTime = clickPositionTimecode;
+  syncAdjust();
+  updateProgressBar();
+});
 
 /* 
 ----------------
@@ -82,7 +97,6 @@ EVENT LISTENER LOOP
 */
 
 makeTracksClickable();
-
 
 /* 
 ----------------
@@ -94,8 +108,7 @@ FUNCTIONS
 function resetPlayPause() {
   playButton.classList.remove("noDisplay");
   pauseButton.classList.add("noDisplay");
-  progress.style.width = "0%"
-  console.log("test")
+  progress.style.width = "0%";
 }
 
 //play pause audio
@@ -103,11 +116,11 @@ function playPauseTrack() {
   if (playButton.classList.contains("noDisplay")) {
     audioPlayer.play();
     audioPlayer2.play();
-    progressLoop = setInterval(updateProgressBar, 64)
+    progressLoop = setInterval(updateProgressBar, 64);
   } else {
     audioPlayer.pause();
     audioPlayer2.pause();
-    clearInterval(progressLoop)
+    clearInterval(progressLoop);
   }
 }
 
@@ -121,34 +134,32 @@ function isMixed() {
 
 //check audio sync
 function checkSync() {
-  return (Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime))
+  return Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime);
 }
 
 //sync audio (introduces small delay)
 function syncAudio() {
-  let currentTimeReference = audioPlayer.currentTime
+  let currentTimeReference = audioPlayer.currentTime;
   audioPlayer.currentTime = currentTimeReference;
   audioPlayer2.currentTime = currentTimeReference;
 }
 
 // check audio sync then adjust sync
 function syncAdjust() {
-  if (checkSync() > 0.05) {
-    syncAudio()
+  if (checkSync() > 0.01) {
+    syncAudio();
   }
 }
 
-
-
 // update css postion of the progress bar
 function updateProgressBar() {
-  let progressvalue = ((audioPlayer.currentTime / audioPlayer.duration) * 100).toString()
-  let progressValuePercent = progressvalue.concat("%")
+  let progressvalue = (
+    (audioPlayer.currentTime / audioPlayer.duration) *
+    100
+  ).toString();
+  let progressValuePercent = progressvalue.concat("%");
   progress.style.width = progressValuePercent;
 }
-
-
-
 
 //track selector
 function makeTracksClickable() {
@@ -158,7 +169,9 @@ function makeTracksClickable() {
       resetSelectedTrack(trackList);
       this.classList.add("trackSelector__active");
       let selectedTrack = audioFiles[this.id];
+      let selectedTrack2 = audioFilesUnmixed[this.id];
       audioSource.setAttribute("src", `${selectedTrack}`);
+      audioSource2.setAttribute("src", `${selectedTrack2}`);
       audioPlayer.load();
       audioPlayer2.load();
       //optional autoplay on click
