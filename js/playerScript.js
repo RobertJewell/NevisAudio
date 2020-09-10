@@ -59,7 +59,7 @@ playPause.addEventListener("click", function () {
 
 //Mix button
 mixButton.addEventListener("click", function () {
-  syncAdjust();
+  // syncAdjust();
   if (isMixed() == true) {
     audioPlayer2.muted = false;
     audioPlayer.muted = true;
@@ -114,12 +114,12 @@ function resetPlayPause() {
 //play pause audio
 function playPauseTrack() {
   if (playButton.classList.contains("noDisplay")) {
-    audioPlayer.play();
     audioPlayer2.play();
+    audioPlayer.play();
     progressLoop = setInterval(updateProgressBar, 64);
   } else {
-    audioPlayer.pause();
     audioPlayer2.pause();
+    audioPlayer.pause();
     clearInterval(progressLoop);
   }
 }
@@ -134,14 +134,15 @@ function isMixed() {
 
 //check audio sync
 function checkSync() {
-  return Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime);
+  // return Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime);
+  return (audioPlayer2.currentTime - audioPlayer.currentTime);
 }
 
 //sync audio (introduces small delay)
 function syncAudio() {
   let currentTimeReference = audioPlayer.currentTime;
-  audioPlayer.currentTime = currentTimeReference;
   audioPlayer2.currentTime = currentTimeReference;
+  audioPlayer.currentTime = currentTimeReference;
 }
 
 // check audio sync then adjust sync
