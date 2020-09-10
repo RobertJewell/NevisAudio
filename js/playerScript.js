@@ -146,7 +146,7 @@ function syncAudio() {
 
 // check audio sync then adjust sync
 function syncAdjust() {
-  if (checkSync() > 0.01) {
+  if (checkSync() > 0.02) {
     syncAudio();
   }
 }
