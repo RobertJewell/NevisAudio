@@ -7,7 +7,7 @@ let audioFiles = {
 };
 
 let audioFilesUnmixed = {
-  track1: "audioFiles/mixed/andrew_mcEwan--wait--mixed.mp3",
+  track1: "audioFiles/mixed/andrew_mcEwan--wait--unmixed.mp3",
   track2: "audioFiles/unmixed/beefywink--feel_me--unmixed.mp3",
   track3: "audioFiles/unmixed/fallen_house--i_disappear--unmixed.mp3",
   track4: "audioFiles/unmixed/the_taboos--innovative_thinking--unmixed.mp3",
@@ -59,14 +59,14 @@ playPause.addEventListener("click", function () {
 
 //Mix button
 mixButton.addEventListener("click", function () {
-  // syncAdjust();
+  syncAdjust();
   if (isMixed() == true) {
-    audioPlayer2.muted = false;
     audioPlayer.muted = true;
+    audioPlayer2.muted = false;
     mixButton.textContent = "Hear Mixed!";
   } else {
-    audioPlayer2.muted = true;
     audioPlayer.muted = false;
+    audioPlayer2.muted = true;
     mixButton.textContent = "Hear Unmixed!";
   }
 });
@@ -114,12 +114,12 @@ function resetPlayPause() {
 //play pause audio
 function playPauseTrack() {
   if (playButton.classList.contains("noDisplay")) {
-    audioPlayer2.play();
     audioPlayer.play();
+    audioPlayer2.play();
     progressLoop = setInterval(updateProgressBar, 64);
   } else {
-    audioPlayer2.pause();
     audioPlayer.pause();
+    audioPlayer2.pause();
     clearInterval(progressLoop);
   }
 }
@@ -134,15 +134,14 @@ function isMixed() {
 
 //check audio sync
 function checkSync() {
-  // return Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime);
-  return (audioPlayer2.currentTime - audioPlayer.currentTime);
+  return Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime);
 }
 
 //sync audio (introduces small delay)
 function syncAudio() {
   let currentTimeReference = audioPlayer.currentTime;
-  audioPlayer2.currentTime = currentTimeReference;
   audioPlayer.currentTime = currentTimeReference;
+  audioPlayer2.currentTime = currentTimeReference;
 }
 
 // check audio sync then adjust sync
