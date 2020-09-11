@@ -1,16 +1,16 @@
 /* All tracks object */
 let audioFiles = {
-  track1: "audioFiles/mixed/andrew_mcEwan--wait--mixed.mp3",
-  track2: "audioFiles/mixed/beefywink--feel_me--mixed.mp3",
-  track3: "audioFiles/mixed/fallen_house--i_disappear--mixed.mp3",
-  track4: "audioFiles/mixed/the_taboos--innovative_thinking--mixed.mp3",
+  track1: "audioFiles/mixed/cbr-the_taboos--innovative_thinking--mixed.mp3",
+  track2: "audioFiles/mixed/cbr-andrew_mcEwan--wait--mixed.mp3",
+  track3: "audioFiles/mixed/cbr-beefywink--feel_me--mixed.mp3",
+  track4: "audioFiles/mixed/cbr-fallen_house--i_disappear--mixed.mp3",
 };
 
 let audioFilesUnmixed = {
-  track1: "audioFiles/mixed/andrew_mcEwan--wait--unmixed.mp3",
-  track2: "audioFiles/unmixed/beefywink--feel_me--unmixed.mp3",
-  track3: "audioFiles/unmixed/fallen_house--i_disappear--unmixed.mp3",
-  track4: "audioFiles/unmixed/the_taboos--innovative_thinking--unmixed.mp3",
+  track1: "audioFiles/unmixed/cbr-the_taboos--innovative_thinking--unmixed.mp3",
+  track2: "audioFiles/unmixed/cbr-andrew_mcEwan--wait--unmixed.mp3",
+  track3: "audioFiles/unmixed/cbr-beefywink--feel_me--unmixed.mp3",
+  track4: "audioFiles/unmixed/cbr-fallen_house--i_disappear--unmixed.mp3",
 };
 
 /* 
