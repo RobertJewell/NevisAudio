@@ -644,20 +644,44 @@ hr {
   margin-bottom: 1.5rem;
 }
 
+.mixToggle {
+  background-color: #0b0f16;
+  border-radius: 100rem;
+  position: relative;
+}
+
+.mixButton__bg {
+  width: 100px;
+  height: 35px;
+  border-radius: 100rem;
+  background-color: #d145cc;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-left: 0;
+  color: rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  z-index: 0;
+}
+
+.mixButton__bg--active {
+  left: 100%;
+  margin-left: -100px;
+  /*.animate width*/
+}
+
 .mixButton {
   font-size: 0.8rem;
   -webkit-transition: 200ms;
   transition: 200ms;
   border-radius: 100rem;
-  width: 140px;
+  width: 100px;
+  height: 35px;
   padding: 0.6rem 0;
   color: #fcfbf7;
-  border: solid 3px #fcfbf7;
-  background-color: #191929;
-}
-
-.mixButton:hover {
-  background-color: #262635;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 .playerTracks {
