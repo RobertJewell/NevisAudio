@@ -439,7 +439,7 @@ button:focus {
 }
 
 .about__text {
-  text-align: justify;
+  text-align: start;
   margin-top: -1rem;
 }
 

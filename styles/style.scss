@@ -436,7 +436,7 @@ button:focus {
 }
 
 .about__text {
-  text-align: justify;
+  text-align: start;
   margin-top: -1rem;
   p {
     padding-bottom: 1rem;
@@ -763,13 +763,11 @@ hr {
 form {
   display: flex;
   flex-direction: column;
-
 }
-
 
 //replace autofill styling
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -783,7 +781,6 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px $main-bg-color inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
 
 .inputBox {
   background-color: $main-bg-color;
@@ -801,7 +798,6 @@ select:-webkit-autofill:focus {
   font-size: 0.8rem;
   line-height: 1.6;
   font-weight: 400;
-
 }
 
 .inputLabel {
@@ -811,10 +807,8 @@ select:-webkit-autofill:focus {
 
 .inputButton {
   border-radius: 3rem;
-  border: 2px solid $main-accent-color ;
+  border: 2px solid $main-accent-color;
 }
-
-
 
 .progressBar--container {
   padding: 3px 0;
@@ -843,14 +837,28 @@ select:-webkit-autofill:focus {
   height: 3px;
   /* update to adapt to screen size changes */
   width: 800px;
-  background-image: -webkit-gradient(linear, left top, right top, from(#c04ffc), color-stop(25%, #ff48b8), color-stop(50%, #ff385d), color-stop(75%, #ff573d), to(#fb9a41));
-  background-image: linear-gradient(90deg, #c04ffc 0%, #ff48b8 25%, #ff385d 50%, #ff573d 75%, #fb9a41 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#c04ffc),
+    color-stop(25%, #ff48b8),
+    color-stop(50%, #ff385d),
+    color-stop(75%, #ff573d),
+    to(#fb9a41)
+  );
+  background-image: linear-gradient(
+    90deg,
+    #c04ffc 0%,
+    #ff48b8 25%,
+    #ff385d 50%,
+    #ff573d 75%,
+    #fb9a41 100%
+  );
   border-radius: 3px;
   position: absolute;
   left: 0;
 }
-
-
 
 //redirect page
 
@@ -859,7 +867,6 @@ select:-webkit-autofill:focus {
   width: 100%;
   height: 100%;
 }
-
 
 .container__thanks {
   flex-direction: column;
