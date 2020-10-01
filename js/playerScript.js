@@ -34,9 +34,13 @@ let audioSource2 = document.getElementById("audioPlayer__unmixedTrack");
 
 //Player contols
 let playPause = document.getElementById("playerControls__button--playPause");
-let mixButton = document.getElementById("playerControls__button--mix");
 let playButton = document.getElementById("playerControls__play");
 let pauseButton = document.getElementById("playerControls__pause");
+
+//mix toggle
+let mixButton = document.getElementById("playerControls__button--mixed");
+let unmixButton = document.getElementById("playerControls__button--unmixed");
+let mixToggleBG = document.getElementById("playerControls__button--bg");
 
 //Progress Bar
 let progress = document.getElementById("progressBar");
@@ -60,15 +64,16 @@ playPause.addEventListener("click", function () {
 //Mix button
 mixButton.addEventListener("click", function () {
   syncAdjust();
-  if (isMixed() == true) {
-    audioPlayer.muted = true;
-    audioPlayer2.muted = false;
-    mixButton.textContent = "Hear Mixed!";
-  } else {
-    audioPlayer.muted = false;
-    audioPlayer2.muted = true;
-    mixButton.textContent = "Hear Unmixed!";
-  }
+  mixToggleBG.classList.add("mixButton__bg--active");
+  audioPlayer.muted = false;
+  audioPlayer2.muted = true;
+});
+
+unmixButton.addEventListener("click", function () {
+  syncAdjust();
+  mixToggleBG.classList.remove("mixButton__bg--active");
+  audioPlayer.muted = true;
+  audioPlayer2.muted = false;
 });
 
 //reset play/pause on track end
@@ -126,7 +131,7 @@ function playPauseTrack() {
 
 //Check state of mix button
 function isMixed() {
-  if (mixButton.textContent == "Hear Unmixed!") {
+  if (mixToggleBG.classList.contains("mixButton__bg--active")) {
     return true;
   }
   return false;
@@ -140,13 +145,15 @@ function checkSync() {
 //sync audio (introduces small delay)
 function syncAudio() {
   let currentTimeReference = audioPlayer.currentTime;
-  audioPlayer.currentTime = currentTimeReference;
+  // introduces delay to compensate for offset (replace this with async await)
+  setTimeout(() => (audioPlayer.currentTime = currentTimeReference), 93);
   audioPlayer2.currentTime = currentTimeReference;
+  // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
 }
 
 // check audio sync then adjust sync
 function syncAdjust() {
-  if (checkSync() > 0.02) {
+  if (checkSync() > 0.05) {
     syncAudio();
   }
 }

@@ -632,6 +632,13 @@ hr {
   margin-right: 2rem;
 }
 
+@media (max-width: 350px) {
+  #playerControls__button--playPause {
+    margin-bottom: 2rem;
+    margin-left: 1.5rem;
+  }
+}
+
 .switches {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -644,31 +651,47 @@ hr {
   margin-bottom: 1.5rem;
 }
 
+@media (max-width: 350px) {
+  .switches {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .mixToggle {
   background-color: #0b0f16;
   border-radius: 100rem;
   position: relative;
 }
 
+@media (max-width: 350px) {
+  .mixToggle {
+    padding: 1rem auto;
+  }
+}
+
 .mixButton__bg {
   width: 100px;
   height: 35px;
   border-radius: 100rem;
-  background-color: #d145cc;
   position: absolute;
   left: 0;
   top: 0;
   margin-left: 0;
+  z-index: 1;
   color: rgba(0, 0, 0, 0);
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  z-index: 0;
+  background-color: #2d2d4e;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 .mixButton__bg--active {
   left: 100%;
   margin-left: -100px;
   /*.animate width*/
+  background: darkorange;
 }
 
 .mixButton {
@@ -680,7 +703,8 @@ hr {
   height: 35px;
   padding: 0.6rem 0;
   color: #fcfbf7;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
   z-index: 2;
 }
 

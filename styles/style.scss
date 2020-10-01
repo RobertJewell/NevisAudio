@@ -22,6 +22,12 @@ $no-gradient: linear-gradient(
 );
 
 // Mixins - Media queries
+
+@mixin for-tiny-phone-only {
+  @media (max-width: 350px) {
+    @content;
+  }
+}
 @mixin for-phone-only {
   @media (max-width: 599px) {
     @content;
@@ -575,6 +581,10 @@ hr {
   padding: 0;
   background: none;
   margin-right: 2rem;
+  @include for-tiny-phone-only() {
+    margin-bottom: 2rem;
+    margin-left: 1.5rem;
+  }
 }
 
 .switches {
@@ -582,31 +592,38 @@ hr {
   align-items: center;
   align-content: center;
   margin-bottom: 1.5rem;
+  @include for-tiny-phone-only() {
+    flex-direction: column;
+  }
 }
 
 .mixToggle {
   background-color: $main-bg-color;
   border-radius: 100rem;
   position: relative;
+  @include for-tiny-phone-only() {
+    padding: 1rem auto;
+  }
 }
 
 .mixButton__bg {
   width: 100px;
   height: 35px;
   border-radius: 100rem;
-  background-color: #d145cc;
   position: absolute;
   left: 0;
   top: 0;
   margin-left: 0;
+  z-index: 1;
   color: rgba(0, 0, 0, 0);
-  transition: all 0.2s ease-out;
-  z-index: 0;
+  background-color: #2d2d4e;
+  transition: all 0.1s ease-out;
 }
 
 .mixButton__bg--active {
   left: 100%;
   margin-left: -100px; /*.animate width*/
+  background: $main-accent-color;
 }
 
 .mixButton {
@@ -617,13 +634,14 @@ hr {
   height: 35px;
   padding: 0.6rem 0;
   color: $main-text-color;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
   z-index: 2;
 }
 
-.mixButton:hover {
-  // background-color: #262635;
-}
+// .mixButton:hover {
+//   // background-color: #262635;
+// }
 
 .playerTracks {
   width: 100%;
@@ -671,9 +689,7 @@ hr {
   left: 0;
   top: 0;
   z-index: -1;
-  //opacity
   opacity: 0.3;
-  // background-image: url(../imgs/TapeMachine.jpg);
   background-size: cover;
   background-position: center;
 }
