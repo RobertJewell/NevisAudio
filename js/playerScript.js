@@ -145,15 +145,14 @@ function checkSync() {
 //sync audio (introduces small delay)
 function syncAudio() {
   let currentTimeReference = audioPlayer.currentTime;
-  // introduces delay to compensate for offset (replace this with async await)
-  setTimeout(() => (audioPlayer.currentTime = currentTimeReference), 93);
+  audioPlayer.currentTime = currentTimeReference;
   audioPlayer2.currentTime = currentTimeReference;
   // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
 }
 
 // check audio sync then adjust sync
 function syncAdjust() {
-  if (checkSync() > 0.05) {
+  if (checkSync() > 0.02) {
     syncAudio();
   }
 }
