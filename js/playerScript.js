@@ -19,14 +19,27 @@ VARIABLES
 ---------------- 
 */
 
+//set up audio context
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioContext = new AudioContext();
+//grab audio elements
+const audioElementMixed = document.getElementById("audioPlayer__mixed");
+const audioElementUnmixed = document.getElementById("audioPlayer__unmixed");
+//pass audio elements to audio context as elements
+const mixedTrack = audioContext.createMediaElementSource(audioElementMixed);
+const unmixedTrack = audioContext.createMediaElementSource(audioElementUnmixed);
+//send the elements to the default outputs
+mixedTrack.connect(audioContext.destination);
+unmixedTrack.connect(audioContext.destination);
+
 //Pull the list of tracks from the DOM
 let collectTracks = document.getElementsByClassName("trackSelector");
 //Make that tracklist iterable
 let trackList = [...collectTracks];
 
 //Audio Players
-let audioPlayer = document.getElementById("audioPlayer__mixed");
-let audioPlayer2 = document.getElementById("audioPlayer__unmixed");
+// let audioPlayer = document.getElementById("audioPlayer__mixed");
+// let audioPlayer2 = document.getElementById("audioPlayer__unmixed");
 
 //Audio Source
 let audioSource = document.getElementById("audioPlayer__track");
@@ -65,32 +78,32 @@ playPause.addEventListener("click", function () {
 mixButton.addEventListener("click", function () {
   syncAdjust();
   mixToggleBG.classList.add("mixButton__bg--active");
-  audioPlayer.muted = false;
-  audioPlayer2.muted = true;
+  audioElementMixed.muted = true;
+  audioElementUnmixed.muted = true;
 });
 
 unmixButton.addEventListener("click", function () {
   syncAdjust();
   mixToggleBG.classList.remove("mixButton__bg--active");
-  audioPlayer.muted = true;
-  audioPlayer2.muted = false;
+  audioElementMixed.muted = true;
+  audioElementUnmixed.muted = true;
 });
 
 //reset play/pause on track end
-audioPlayer.addEventListener("ended", function () {
+audioElementMixed.addEventListener("ended", function () {
   playButton.classList.remove("noDisplay");
   pauseButton.classList.add("noDisplay");
-  audioPlayer.currentTime = 0;
-  audioPlayer2.currentTime = 0;
+  audioElementMixed.currentTime = 0;
+  audioElementUnmixed.currentTime = 0;
   progress.style.width = "0%";
 });
 
 // move track position
 progressContainer.addEventListener("click", function (e) {
   let clickPosition = e.offsetX / e.target.clientWidth;
-  let clickPositionTimecode = clickPosition * audioPlayer.duration;
-  audioPlayer.currentTime = clickPositionTimecode;
-  audioPlayer2.currentTime = clickPositionTimecode;
+  let clickPositionTimecode = clickPosition * audioElementMixed.duration;
+  audioElementMixed.currentTime = clickPositionTimecode;
+  audioElementUnmixed.currentTime = clickPositionTimecode;
   syncAdjust();
   updateProgressBar();
 });
@@ -118,13 +131,16 @@ function resetPlayPause() {
 
 //play pause audio
 function playPauseTrack() {
+  if (audioContext.state === "suspended") {
+    audioContext.resume();
+  }
   if (playButton.classList.contains("noDisplay")) {
-    audioPlayer.play();
-    audioPlayer2.play();
+    audioElementMixed.play();
+    audioElementUnmixed.play();
     progressLoop = setInterval(updateProgressBar, 64);
   } else {
-    audioPlayer.pause();
-    audioPlayer2.pause();
+    audioElementMixed.pause();
+    audioElementUnmixed.pause();
     clearInterval(progressLoop);
   }
 }
@@ -139,15 +155,17 @@ function isMixed() {
 
 //check audio sync
 function checkSync() {
-  return Math.abs(audioPlayer2.currentTime - audioPlayer.currentTime);
+  return Math.abs(
+    audioElementUnmixed.currentTime - audioElementMixed.currentTime
+  );
 }
 
 //sync audio (introduces small delay)
 function syncAudio() {
-  let currentTimeReference = audioPlayer.currentTime;
-  audioPlayer.currentTime = currentTimeReference;
-  audioPlayer2.currentTime = currentTimeReference;
-  // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
+  let currentTimeReference = audioElementMixed.currentTime;
+  audioElementMixed.currentTime = currentTimeReference;
+  audioElementUnmixed.currentTime = currentTimeReference;
+  // console.log(audioElementMixed.currentTime, audioElementUnmixed.currentTime);
 }
 
 // check audio sync then adjust sync
@@ -160,7 +178,7 @@ function syncAdjust() {
 // update css postion of the progress bar
 function updateProgressBar() {
   let progressvalue = (
-    (audioPlayer.currentTime / audioPlayer.duration) *
+    (audioElementMixed.currentTime / audioElementMixed.duration) *
     100
   ).toString();
   let progressValuePercent = progressvalue.concat("%");
@@ -178,10 +196,10 @@ function makeTracksClickable() {
       let selectedTrack2 = audioFilesUnmixed[this.id];
       audioSource.setAttribute("src", `${selectedTrack}`);
       audioSource2.setAttribute("src", `${selectedTrack2}`);
-      audioPlayer.load();
-      audioPlayer2.load();
+      audioElementMixed.load();
+      audioElementUnmixed.load();
       //optional autoplay on click
-      //audioPlayer.play();
+      //audioElementMixed.play();
     });
   }
 }
