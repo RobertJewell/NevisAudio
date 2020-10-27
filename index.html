@@ -5,12 +5,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Nevis Audio can provide you with professional-sounding mixes for their songs, that make them stand out from the crowd.">
+    content="Nevis Audio can provide you with professional-sounding mixes for your songs, that make them stand out from the crowd.">
   <title>Nevis Audio</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/aos.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135901005-1">
+  </script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135901005-1');
+  </script>
+
 </head>
 
 <body>
@@ -83,11 +94,11 @@
           </div>
         </div>
         <div id="playerControls">
-          <audio id="audioPlayer__mixed" preload="metadata">
+          <audio id="audioPlayer__mixed" preload="audio">
             <source src="audioFiles/mixed/cbr-the_taboos--innovative_thinking--mixed.mp3" type="audio/mp3"
               id="audioPlayer__track" />
           </audio>
-          <audio id="audioPlayer__unmixed" preload="metadata" muted>
+          <audio id="audioPlayer__unmixed" preload="audio" muted>
             <source src="audioFiles/unmixed/cbr-the_taboos--innovative_thinking--unmixed.mp3" type="audio/mp3"
               id="audioPlayer__unmixedTrack" />
           </audio>
@@ -190,18 +201,14 @@
       <div class="testimonials__cards">
         <div class="card">
           <picture loading="lazy" class="card__img">
-            <source type="image/webp" srcset="./imgs/people/Testamonial_jade.webp">
-            <source type="image/jpg" srcset="./imgs/people/Testamonial_jade.jpg">
-            <img src="./imgs/people/Testamonial_jade.jpg" alt="Sorella" class="card__img" />
+            <source type="image/webp" srcset="./imgs/people/Testamonial_UrbanArchitects.webp">
+            <source type="image/jpg" srcset="./imgs/people/Testamonial_UrbanArchitects.jpg">
+            <img src="./imgs/people/Testamonial_UrbanArchitects.jpg" alt="UrbanArchitects" class="card__img" />
           </picture>
 
-          <h3 class="card__header">Sorella Sound</h3>
+          <h3 class="card__header">Urban Architects</h3>
           <p class="quote">
-            When doing research into who we wanted to mix our song, we were
-            initially concerned about finding the right person for our piece.
-            However, after hearing the mix Joe provided for us, we learnt
-            there was no need to worry. The mix Joe provided truly brought our
-            piece to life.
+            Joe’s personal touch to work to the bands needs is awesome and process of consulting/<wbr>booking a project with him is a breeze. It’s a very proud moment as a songwriter to hear something you imagined in your head come out of a pair of speakers and Joe helped us achieve just that. 
           </p>
           <p class="quotemarks">"</p>
         </div>

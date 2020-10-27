@@ -162,10 +162,18 @@ function checkSync() {
 
 //sync audio (introduces small delay)
 function syncAudio() {
+<<<<<<< HEAD
   let currentTimeReference = audioElementMixed.currentTime;
   audioElementMixed.currentTime = currentTimeReference;
   audioElementUnmixed.currentTime = currentTimeReference;
   // console.log(audioElementMixed.currentTime, audioElementUnmixed.currentTime);
+=======
+  let currentTimeReference = audioPlayer.currentTime;
+  // introduces delay to compensate for offset (replace this with async await)
+  setTimeout(() => (audioPlayer.currentTime = currentTimeReference), 0);
+  audioPlayer2.currentTime = currentTimeReference;
+  // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
+>>>>>>> master
 }
 
 // check audio sync then adjust sync
