@@ -14,7 +14,7 @@ VARIABLES
 */
 
 //set up audio context
-const AudioContext = window.AudioContext || window.webkitAudioContext;
+const AudioContext = window.AudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
