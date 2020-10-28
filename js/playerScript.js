@@ -61,7 +61,7 @@ const mixToggleBG = document.getElementById("playerControls__button--bg");
 //Progress Bar
 const progress = document.getElementById("progressBar");
 const progressContainer = document.getElementById("progressBar--container");
-// let progressLoop;
+let progressLoop;
 
 /* 
 ----------------
@@ -73,6 +73,7 @@ EVENT LISTENERS
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
+  playPauseTrack();
 });
 
 //Mix button
@@ -97,12 +98,12 @@ audioElement.addEventListener("ended", function () {
 });
 
 // move track position
-// progressContainer.addEventListener("click", function (e) {
-//   let clickPosition = e.offsetX / e.target.clientWidth;
-//   let clickPositionTimecode = clickPosition * audioElement.duration;
-//   audioElement.currentTime = clickPositionTimecode;
-//   updateProgressBar();
-// });
+progressContainer.addEventListener("click", function (e) {
+  let clickPosition = e.offsetX / e.target.clientWidth;
+  let clickPositionTimecode = clickPosition * audioElement.duration;
+  audioElement.currentTime = clickPositionTimecode;
+  updateProgressBar();
+});
 
 /* 
 ----------------
@@ -132,10 +133,10 @@ function playPauseTrack() {
   }
   if (playButton.classList.contains("noDisplay")) {
     audioElement.play();
-    // progressLoop = setInterval(updateProgressBar, 64);
+    progressLoop = setInterval(updateProgressBar, 64);
   } else {
     audioElement.pause();
-    // clearInterval(progressLoop);
+    clearInterval(progressLoop);
   }
 }
 
@@ -149,14 +150,14 @@ function isMixed() {
 
 
 // update css postion of the progress bar
-// function updateProgressBar() {
-//   let progressvalue = (
-//     (audioElement.currentTime / audioElement.duration) *
-//     100
-//   ).toString();
-//   let progressValuePercent = progressvalue.concat("%");
-//   progress.style.width = progressValuePercent;
-// }
+function updateProgressBar() {
+  let progressvalue = (
+    (audioElement.currentTime / audioElement.duration) *
+    100
+  ).toString();
+  let progressValuePercent = progressvalue.concat("%");
+  progress.style.width = progressValuePercent;
+}
 
 //track selector
 function makeTracksClickable() {
