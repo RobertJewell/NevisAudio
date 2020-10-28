@@ -1,19 +1,3 @@
-//Fix web audio API on ios
-window.addEventListener('touchstart', function() {
-
-	// create empty buffer
-	var buffer = myContext.createBuffer(1, 1, 22050);
-	var source = myContext.createBufferSource();
-	source.buffer = buffer;
-
-	// connect to output (your speakers)
-	source.connect(myContext.destination);
-
-	// play the file
-	source.noteOn(0);
-
-}, false);
-
 /* All tracks object */
 let audioFiles = {
   track1: "audioFiles/the_taboos--innovative_thinking.mp4",
@@ -29,27 +13,27 @@ VARIABLES
 ---------------- 
 */
 
-//set up audio context
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-const audioContext = new AudioContext();
-const audioElement = document.getElementById("audioPlayer");
-const sourceTrack = audioContext.createMediaElementSource(audioElement);
-const channelSplitter = audioContext.createChannelSplitter(4)
-const mergeMixed = audioContext.createChannelMerger(2)
-const mergeUnmixed = audioContext.createChannelMerger(2)
-const mixedGain = audioContext.createGain()
-const unmixedGain = audioContext.createGain()
+// //set up audio context
+// const AudioContext = window.AudioContext || window.webkitAudioContext;
+// const audioContext = new AudioContext();
+// const audioElement = document.getElementById("audioPlayer");
+// const sourceTrack = audioContext.createMediaElementSource(audioElement);
+// const channelSplitter = audioContext.createChannelSplitter(4)
+// const mergeMixed = audioContext.createChannelMerger(2)
+// const mergeUnmixed = audioContext.createChannelMerger(2)
+// const mixedGain = audioContext.createGain()
+// const unmixedGain = audioContext.createGain()
 
-//Routing
-sourceTrack.connect(channelSplitter);
-channelSplitter.connect(mergeMixed, 0, 0);
-channelSplitter.connect(mergeMixed, 1, 1);
-channelSplitter.connect(mergeUnmixed, 2, 0);
-channelSplitter.connect(mergeUnmixed, 3, 1);
-mergeMixed.connect(mixedGain)
-mergeUnmixed.connect(unmixedGain)
-mixedGain.connect(audioContext.destination)
-unmixedGain.connect(audioContext.destination)
+// //Routing
+// sourceTrack.connect(channelSplitter);
+// channelSplitter.connect(mergeMixed, 0, 0);
+// channelSplitter.connect(mergeMixed, 1, 1);
+// channelSplitter.connect(mergeUnmixed, 2, 0);
+// channelSplitter.connect(mergeUnmixed, 3, 1);
+// mergeMixed.connect(mixedGain)
+// mergeUnmixed.connect(unmixedGain)
+// mixedGain.connect(audioContext.destination)
+// unmixedGain.connect(audioContext.destination)
 
 //Set initial gain
 unmixedGain.gain.value = 0
@@ -144,6 +128,28 @@ function resetPlayPause() {
 
 //play pause audio
 function playPauseTrack() {
+  if (!audioContext) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioContext = new AudioContext();
+    const audioElement = document.getElementById("audioPlayer");
+    const sourceTrack = audioContext.createMediaElementSource(audioElement);
+    const channelSplitter = audioContext.createChannelSplitter(4)
+    const mergeMixed = audioContext.createChannelMerger(2)
+    const mergeUnmixed = audioContext.createChannelMerger(2)
+    const mixedGain = audioContext.createGain()
+    const unmixedGain = audioContext.createGain()
+
+    //Routing
+    sourceTrack.connect(channelSplitter);
+    channelSplitter.connect(mergeMixed, 0, 0);
+    channelSplitter.connect(mergeMixed, 1, 1);
+    channelSplitter.connect(mergeUnmixed, 2, 0);
+    channelSplitter.connect(mergeUnmixed, 3, 1);
+    mergeMixed.connect(mixedGain)
+    mergeUnmixed.connect(unmixedGain)
+    mixedGain.connect(audioContext.destination)
+    unmixedGain.connect(audioContext.destination)
+  }
   if (audioContext.state === "suspended") {
     audioContext.resume();
   }
