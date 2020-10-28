@@ -20,24 +20,28 @@ const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
 const channelSplitter = audioContext.createChannelSplitter(4)
 const mergeMixed = audioContext.createChannelMerger(2)
-const mergeUnmixed = audioContext.createChannelMerger(2)
-const mixedGain = audioContext.createGain()
-const unmixedGain = audioContext.createGain()
+ const mergeUnmixed = audioContext.createChannelMerger(2)
+ const mixedGain = audioContext.createGain()
+ const unmixedGain = audioContext.createGain()
+ 
+ sourceTrack.connect(channelSplitter);
+ channelSplitter.connect(mergeMixed, 0, 0);
+ channelSplitter.connect(mergeMixed, 1, 1);
+ channelSplitter.connect(mergeUnmixed, 2, 0);
+ channelSplitter.connect(mergeUnmixed, 3, 1);
+ mergeMixed.connect(mixedGain)
+ mergeUnmixed.connect(unmixedGain)
+ mixedGain.connect(audioContext.destination)
+ unmixedGain.connect(audioContext.destination)
+
+ unmixedGain.gain.value = 0
+ mixedGain.gain.value = 1
 
 //Routing
-sourceTrack.connect(channelSplitter);
-channelSplitter.connect(mergeMixed, 0, 0);
-channelSplitter.connect(mergeMixed, 1, 1);
-channelSplitter.connect(mergeUnmixed, 2, 0);
-channelSplitter.connect(mergeUnmixed, 3, 1);
-mergeMixed.connect(mixedGain)
-mergeUnmixed.connect(unmixedGain)
-mixedGain.connect(audioContext.destination)
-unmixedGain.connect(audioContext.destination)
+
 
 //Set initial gain
-unmixedGain.gain.value = 0
-mixedGain.gain.value = 1
+
 
 
 //Pull the list of tracks from the DOM
@@ -128,14 +132,28 @@ function resetPlayPause() {
 
 //play pause audio
 function playPauseTrack() {
-  if (!audioContext) {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    audioContext = new AudioContext();
-    alert("bing")
-  }
   if (audioContext.state === "suspended") {
     audioContext.resume();
-    alert(audioContext.state)
+  }
+  if (!channelSplitter) {
+    const channelSplitter = audioContext.createChannelSplitter(4)
+    const mergeMixed = audioContext.createChannelMerger(2)
+    const mergeUnmixed = audioContext.createChannelMerger(2)
+    const mixedGain = audioContext.createGain()
+    const unmixedGain = audioContext.createGain()
+
+    sourceTrack.connect(channelSplitter);
+    channelSplitter.connect(mergeMixed, 0, 0);
+    channelSplitter.connect(mergeMixed, 1, 1);
+    channelSplitter.connect(mergeUnmixed, 2, 0);
+    channelSplitter.connect(mergeUnmixed, 3, 1);
+    mergeMixed.connect(mixedGain)
+    mergeUnmixed.connect(unmixedGain)
+    mixedGain.connect(audioContext.destination)
+    unmixedGain.connect(audioContext.destination)
+
+    unmixedGain.gain.value = 0
+    mixedGain.gain.value = 1
   }
   if (playButton.classList.contains("noDisplay")) {
     audioElement.play();
