@@ -73,7 +73,6 @@ EVENT LISTENERS
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
-  audioContext.resume()
   playPauseTrack();
 });
 
