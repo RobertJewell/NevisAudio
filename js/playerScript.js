@@ -128,6 +128,11 @@ function resetPlayPause() {
 
 //play pause audio
 function playPauseTrack() {
+  if (!audioContext) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioContext = new AudioContext();
+    alert("bing")
+  }
   if (audioContext.state === "suspended") {
     audioContext.resume();
     alert(audioContext.state)
