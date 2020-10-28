@@ -1,17 +1,11 @@
 /* All tracks object */
 let audioFiles = {
-  track1: "audioFiles/mixed/cbr-the_taboos--innovative_thinking--mixed.mp3",
-  track2: "audioFiles/mixed/cbr-andrew_mcEwan--wait--mixed.mp3",
-  track3: "audioFiles/mixed/cbr-beefywink--feel_me--mixed.mp3",
-  track4: "audioFiles/mixed/cbr-fallen_house--i_disappear--mixed.mp3",
+  track1: "audioFiles/the_taboos--innovative_thinking.mp4",
+  track2: "audioFiles/andrew_mcEwan--wait.mp4",
+  track3: "audioFiles/beefywink--feel_me.mp4",
+  track4: "audioFiles/fallen_house--i_disappear.mp4",
 };
 
-let audioFilesUnmixed = {
-  track1: "audioFiles/unmixed/cbr-the_taboos--innovative_thinking--unmixed.mp3",
-  track2: "audioFiles/unmixed/cbr-andrew_mcEwan--wait--unmixed.mp3",
-  track3: "audioFiles/unmixed/cbr-beefywink--feel_me--unmixed.mp3",
-  track4: "audioFiles/unmixed/cbr-fallen_house--i_disappear--unmixed.mp3",
-};
 
 /* 
 ----------------
@@ -22,42 +16,51 @@ VARIABLES
 //set up audio context
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
-//grab audio elements
-const audioElementMixed = document.getElementById("audioPlayer__mixed");
-const audioElementUnmixed = document.getElementById("audioPlayer__unmixed");
-//pass audio elements to audio context as elements
-const mixedTrack = audioContext.createMediaElementSource(audioElementMixed);
-const unmixedTrack = audioContext.createMediaElementSource(audioElementUnmixed);
-//send the elements to the default outputs
-mixedTrack.connect(audioContext.destination);
-unmixedTrack.connect(audioContext.destination);
+const audioElement = document.getElementById("audioPlayer");
+const sourceTrack = audioContext.createMediaElementSource(audioElement);
+const channelSplitter = audioContext.createChannelSplitter(4)
+const mergeMixed = audioContext.createChannelMerger(2)
+const mergeUnmixed = audioContext.createChannelMerger(2)
+const mixedGain = audioContext.createGain()
+const unmixedGain = audioContext.createGain()
+
+//Routing
+sourceTrack.connect(channelSplitter);
+channelSplitter.connect(mergeMixed, 0, 0);
+channelSplitter.connect(mergeMixed, 1, 1);
+channelSplitter.connect(mergeUnmixed, 2, 0);
+channelSplitter.connect(mergeUnmixed, 3, 1);
+mergeMixed.connect(mixedGain)
+mergeUnmixed.connect(unmixedGain)
+mixedGain.connect(audioContext.destination)
+unmixedGain.connect(audioContext.destination)
+
+//Set initial gain
+unmixedGain.gain.value = 0
+mixedGain.gain.value = 1
+
 
 //Pull the list of tracks from the DOM
-let collectTracks = document.getElementsByClassName("trackSelector");
+const collectTracks = document.getElementsByClassName("trackSelector");
 //Make that tracklist iterable
-let trackList = [...collectTracks];
-
-//Audio Players
-// let audioPlayer = document.getElementById("audioPlayer__mixed");
-// let audioPlayer2 = document.getElementById("audioPlayer__unmixed");
+const trackList = [...collectTracks];
 
 //Audio Source
-let audioSource = document.getElementById("audioPlayer__track");
-let audioSource2 = document.getElementById("audioPlayer__unmixedTrack");
+const audioSource = document.getElementById("audioPlayer__track");
 
 //Player contols
-let playPause = document.getElementById("playerControls__button--playPause");
-let playButton = document.getElementById("playerControls__play");
-let pauseButton = document.getElementById("playerControls__pause");
+const playPause = document.getElementById("playerControls__button--playPause");
+const playButton = document.getElementById("playerControls__play");
+const pauseButton = document.getElementById("playerControls__pause");
 
 //mix toggle
-let mixButton = document.getElementById("playerControls__button--mixed");
-let unmixButton = document.getElementById("playerControls__button--unmixed");
-let mixToggleBG = document.getElementById("playerControls__button--bg");
+const mixButton = document.getElementById("playerControls__button--mixed");
+const unmixButton = document.getElementById("playerControls__button--unmixed");
+const mixToggleBG = document.getElementById("playerControls__button--bg");
 
 //Progress Bar
-let progress = document.getElementById("progressBar");
-let progressContainer = document.getElementById("progressBar--container");
+const progress = document.getElementById("progressBar");
+const progressContainer = document.getElementById("progressBar--container");
 let progressLoop;
 
 /* 
@@ -70,41 +73,35 @@ EVENT LISTENERS
 playPause.addEventListener("click", function () {
   playButton.classList.toggle("noDisplay");
   pauseButton.classList.toggle("noDisplay");
-  syncAudio();
   playPauseTrack();
 });
 
 //Mix button
 mixButton.addEventListener("click", function () {
-  syncAdjust();
   mixToggleBG.classList.add("mixButton__bg--active");
-  audioElementMixed.muted = true;
-  audioElementUnmixed.muted = true;
+  unmixedGain.gain.value = 0
+  mixedGain.gain.value = 1
 });
 
 unmixButton.addEventListener("click", function () {
-  syncAdjust();
   mixToggleBG.classList.remove("mixButton__bg--active");
-  audioElementMixed.muted = true;
-  audioElementUnmixed.muted = true;
+  mixedGain.gain.value = 0
+  unmixedGain.gain.value = 1
 });
 
 //reset play/pause on track end
-audioElementMixed.addEventListener("ended", function () {
+audioElement.addEventListener("ended", function () {
   playButton.classList.remove("noDisplay");
   pauseButton.classList.add("noDisplay");
-  audioElementMixed.currentTime = 0;
-  audioElementUnmixed.currentTime = 0;
+  audioElement.currentTime = 0;
   progress.style.width = "0%";
 });
 
 // move track position
 progressContainer.addEventListener("click", function (e) {
   let clickPosition = e.offsetX / e.target.clientWidth;
-  let clickPositionTimecode = clickPosition * audioElementMixed.duration;
-  audioElementMixed.currentTime = clickPositionTimecode;
-  audioElementUnmixed.currentTime = clickPositionTimecode;
-  syncAdjust();
+  let clickPositionTimecode = clickPosition * audioElement.duration;
+  audioElement.currentTime = clickPositionTimecode;
   updateProgressBar();
 });
 
@@ -135,12 +132,10 @@ function playPauseTrack() {
     audioContext.resume();
   }
   if (playButton.classList.contains("noDisplay")) {
-    audioElementMixed.play();
-    audioElementUnmixed.play();
+    audioElement.play();
     progressLoop = setInterval(updateProgressBar, 64);
   } else {
-    audioElementMixed.pause();
-    audioElementUnmixed.pause();
+    audioElement.pause();
     clearInterval(progressLoop);
   }
 }
@@ -153,40 +148,11 @@ function isMixed() {
   return false;
 }
 
-//check audio sync
-function checkSync() {
-  return Math.abs(
-    audioElementUnmixed.currentTime - audioElementMixed.currentTime
-  );
-}
-
-//sync audio (introduces small delay)
-function syncAudio() {
-<<<<<<< HEAD
-  let currentTimeReference = audioElementMixed.currentTime;
-  audioElementMixed.currentTime = currentTimeReference;
-  audioElementUnmixed.currentTime = currentTimeReference;
-  // console.log(audioElementMixed.currentTime, audioElementUnmixed.currentTime);
-=======
-  let currentTimeReference = audioPlayer.currentTime;
-  // introduces delay to compensate for offset (replace this with async await)
-  setTimeout(() => (audioPlayer.currentTime = currentTimeReference), 0);
-  audioPlayer2.currentTime = currentTimeReference;
-  // console.log(audioPlayer.currentTime, audioPlayer2.currentTime);
->>>>>>> master
-}
-
-// check audio sync then adjust sync
-function syncAdjust() {
-  if (checkSync() > 0.02) {
-    syncAudio();
-  }
-}
 
 // update css postion of the progress bar
 function updateProgressBar() {
   let progressvalue = (
-    (audioElementMixed.currentTime / audioElementMixed.duration) *
+    (audioElement.currentTime / audioElement.duration) *
     100
   ).toString();
   let progressValuePercent = progressvalue.concat("%");
@@ -201,11 +167,8 @@ function makeTracksClickable() {
       resetSelectedTrack(trackList);
       this.classList.add("trackSelector__active");
       let selectedTrack = audioFiles[this.id];
-      let selectedTrack2 = audioFilesUnmixed[this.id];
       audioSource.setAttribute("src", `${selectedTrack}`);
-      audioSource2.setAttribute("src", `${selectedTrack2}`);
-      audioElementMixed.load();
-      audioElementUnmixed.load();
+      audioElement.load();
       //optional autoplay on click
       //audioElementMixed.play();
     });
