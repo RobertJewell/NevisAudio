@@ -36,8 +36,7 @@ VARIABLES
 // unmixedGain.connect(audioContext.destination)
 
 //Set initial gain
-unmixedGain.gain.value = 0
-mixedGain.gain.value = 1
+
 
 
 //Pull the list of tracks from the DOM
@@ -149,6 +148,9 @@ function playPauseTrack() {
     mergeUnmixed.connect(unmixedGain)
     mixedGain.connect(audioContext.destination)
     unmixedGain.connect(audioContext.destination)
+
+    unmixedGain.gain.value = 0
+    mixedGain.gain.value = 1
   }
   if (audioContext.state === "suspended") {
     audioContext.resume();
@@ -202,3 +204,4 @@ function resetSelectedTrack(arr) {
     arr[i].classList.remove("trackSelector__active");
   }
 }
+
