@@ -30,8 +30,8 @@ channelSplitter.connect(mergeMixed, 0, 0);
 channelSplitter.connect(mergeMixed, 1, 1);
 channelSplitter.connect(mergeUnmixed, 2, 0);
 channelSplitter.connect(mergeUnmixed, 3, 1);
-channelSplitter.connect(mergeUnmixed, 4, 0);
-channelSplitter.connect(mergeUnmixed, 5, 1);
+channelSplitter.connect(mergeUnmixed, 4, 2);
+channelSplitter.connect(mergeUnmixed, 5, 3);
 mergeMixed.connect(mixedGain)
 mergeUnmixed.connect(unmixedGain)
 mixedGain.connect(audioContext.destination)
