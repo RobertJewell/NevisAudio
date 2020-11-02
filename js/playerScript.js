@@ -18,9 +18,9 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
-const channelSplitter = audioContext.createChannelSplitter(4)
+const channelSplitter = audioContext.createChannelSplitter(6)
 const mergeMixed = audioContext.createChannelMerger(2)
-const mergeUnmixed = audioContext.createChannelMerger(2)
+const mergeUnmixed = audioContext.createChannelMerger(4)
 const mixedGain = audioContext.createGain()
 const unmixedGain = audioContext.createGain()
 
@@ -30,6 +30,8 @@ channelSplitter.connect(mergeMixed, 0, 0);
 channelSplitter.connect(mergeMixed, 1, 1);
 channelSplitter.connect(mergeUnmixed, 2, 0);
 channelSplitter.connect(mergeUnmixed, 3, 1);
+channelSplitter.connect(mergeUnmixed, 4, 0);
+channelSplitter.connect(mergeUnmixed, 5, 1);
 mergeMixed.connect(mixedGain)
 mergeUnmixed.connect(unmixedGain)
 mixedGain.connect(audioContext.destination)
