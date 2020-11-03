@@ -26,7 +26,6 @@ const unmixedGain = audioContext.createGain()
 const finalMix = audioContext.createChannelMerger(2)
 
 //Routing
-window.addEventListener("touchend", function() {
 sourceTrack.connect(channelSplitter);
 channelSplitter.connect(mergeMixed, 0, 0);
 channelSplitter.connect(mergeMixed, 1, 1);
@@ -41,8 +40,6 @@ mixedGain.gain.value = 1
 unmixedGain.connect(finalMix, 0, 0)
 unmixedGain.gain.value = 0
 finalMix.connect(audioContext.destination)
-}
-)
 // mixedGain.connect(audioContext.destination)
 // unmixedGain.connect(audioContext.destination)
 
