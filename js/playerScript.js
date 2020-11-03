@@ -6,7 +6,6 @@ let audioFiles = {
   track4: "audioFiles/ChID-BLITS-EBU-Narration441AOT2.mp4",
 };
 
-
 /* 
 ----------------
 VARIABLES
@@ -18,12 +17,12 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
-const channelSplitter = audioContext.createChannelSplitter(6)
-const mergeMixed = audioContext.createChannelMerger(2)
-const mergeUnmixed = audioContext.createChannelMerger(4)
-const mixedGain = audioContext.createGain()
-const unmixedGain = audioContext.createGain()
-const finalMix = audioContext.createChannelMerger(2)
+const channelSplitter = audioContext.createChannelSplitter(6);
+const mergeMixed = audioContext.createChannelMerger(2);
+const mergeUnmixed = audioContext.createChannelMerger(4);
+const mixedGain = audioContext.createGain();
+const unmixedGain = audioContext.createGain();
+const finalMix = audioContext.createChannelMerger(2);
 
 //Routing
 sourceTrack.connect(channelSplitter);
@@ -31,20 +30,17 @@ channelSplitter.connect(mergeMixed, 0, 0);
 channelSplitter.connect(mergeMixed, 1, 1);
 channelSplitter.connect(mergeUnmixed, 2, 0);
 channelSplitter.connect(mergeUnmixed, 3, 1);
-channelSplitter.connect(mergeUnmixed, 4, 0);
-channelSplitter.connect(mergeUnmixed, 5, 1);
-mergeMixed.connect(mixedGain)
-mergeUnmixed.connect(unmixedGain)
-mixedGain.connect(finalMix, 0, 0)
-unmixedGain.connect(finalMix, 0, 0)
-finalMix.connect(audioContext.destination)
-// mixedGain.connect(audioContext.destination)
-// unmixedGain.connect(audioContext.destination)
+channelSplitter.connect(mergeUnmixed, 4, 2);
+channelSplitter.connect(mergeUnmixed, 5, 3);
+mergeMixed.connect(mixedGain);
+mergeUnmixed.connect(unmixedGain);
+mixedGain.connect(finalMix, 0, 0);
+unmixedGain.connect(finalMix, 0, 1);
+finalMix.connect(audioContext.destination);
 
 //Set initial gain
-unmixedGain.gain.value = 0
-mixedGain.gain.value = 1
-
+unmixedGain.gain.value = 0;
+mixedGain.gain.value = 1;
 
 //Pull the list of tracks from the DOM
 const collectTracks = document.getElementsByClassName("trackSelector");
@@ -85,14 +81,14 @@ playPause.addEventListener("click", function () {
 //Mix button
 mixButton.addEventListener("click", function () {
   mixToggleBG.classList.add("mixButton__bg--active");
-  unmixedGain.gain.value = 0
-  mixedGain.gain.value = 1
+  unmixedGain.gain.value = 0;
+  mixedGain.gain.value = 1;
 });
 
 unmixButton.addEventListener("click", function () {
   mixToggleBG.classList.remove("mixButton__bg--active");
-  mixedGain.gain.value = 0
-  unmixedGain.gain.value = 1
+  mixedGain.gain.value = 0;
+  unmixedGain.gain.value = 1;
 });
 
 //reset play/pause on track end
@@ -138,6 +134,18 @@ function playPauseTrack() {
     audioContext.resume();
   }
   if (playButton.classList.contains("noDisplay")) {
+    sourceTrack.connect(channelSplitter);
+    channelSplitter.connect(mergeMixed, 0, 0);
+    channelSplitter.connect(mergeMixed, 1, 1);
+    channelSplitter.connect(mergeUnmixed, 2, 0);
+    channelSplitter.connect(mergeUnmixed, 3, 1);
+    channelSplitter.connect(mergeUnmixed, 4, 2);
+    channelSplitter.connect(mergeUnmixed, 5, 3);
+    mergeMixed.connect(mixedGain);
+    mergeUnmixed.connect(unmixedGain);
+    mixedGain.connect(finalMix, 0, 0);
+    unmixedGain.connect(finalMix, 0, 1);
+    finalMix.connect(audioContext.destination);
     audioElement.play();
     progressLoop = setInterval(updateProgressBar, 64);
   } else {
@@ -153,7 +161,6 @@ function isMixed() {
   }
   return false;
 }
-
 
 // update css postion of the progress bar
 function updateProgressBar() {
