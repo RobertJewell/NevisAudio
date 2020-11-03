@@ -36,16 +36,14 @@ channelSplitter.connect(mergeUnmixed, 5, 1);
 mergeMixed.connect(mixedGain)
 mergeUnmixed.connect(unmixedGain)
 mixedGain.connect(finalMix, 0, 0)
-mixedGain.gain.value = 1
 unmixedGain.connect(finalMix, 0, 0)
-unmixedGain.gain.value = 0
 finalMix.connect(audioContext.destination)
 // mixedGain.connect(audioContext.destination)
 // unmixedGain.connect(audioContext.destination)
 
 //Set initial gain
-// unmixedGain.gain.value = 0
-// mixedGain.gain.value = 1
+unmixedGain.gain.value = 0
+mixedGain.gain.value = 1
 
 
 //Pull the list of tracks from the DOM
