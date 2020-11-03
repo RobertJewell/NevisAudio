@@ -20,9 +20,10 @@ const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
 const channelSplitter = audioContext.createChannelSplitter(6)
 const mergeMixed = audioContext.createChannelMerger(2)
-const mergeUnmixed = audioContext.createChannelMerger(4)
+const mergeUnmixed = audioContext.createChannelMerger(2)
 const mixedGain = audioContext.createGain()
 const unmixedGain = audioContext.createGain()
+const finalMix = audioContext.createChannelMerger(2)
 
 //Routing
 sourceTrack.connect(channelSplitter);
@@ -30,12 +31,15 @@ channelSplitter.connect(mergeMixed, 0, 0);
 channelSplitter.connect(mergeMixed, 1, 1);
 channelSplitter.connect(mergeUnmixed, 2, 0);
 channelSplitter.connect(mergeUnmixed, 3, 1);
-channelSplitter.connect(mergeUnmixed, 4, 2);
-channelSplitter.connect(mergeUnmixed, 5, 3);
+// channelSplitter.connect(mergeUnmixed, 4, 2);
+// channelSplitter.connect(mergeUnmixed, 5, 3);
 mergeMixed.connect(mixedGain)
 mergeUnmixed.connect(unmixedGain)
-mixedGain.connect(audioContext.destination)
-unmixedGain.connect(audioContext.destination)
+mixedGain.connect(finalMix)
+unmixedGain.connect(finalMix)
+finalMix.connect(audioContext.destination)
+// mixedGain.connect(audioContext.destination)
+// unmixedGain.connect(audioContext.destination)
 
 //Set initial gain
 unmixedGain.gain.value = 0
