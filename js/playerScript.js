@@ -87,7 +87,7 @@ mixButton.addEventListener("click", function () {
 
 unmixButton.addEventListener("click", function () {
   mixToggleBG.classList.remove("mixButton__bg--active");
-  mixedGain.gain.value = 1;
+  mixedGain.gain.value = 0.5;
   unmixedGain.gain.value = 1;
 });
 
