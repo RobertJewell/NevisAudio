@@ -134,18 +134,6 @@ function playPauseTrack() {
     audioContext.resume();
   }
   if (playButton.classList.contains("noDisplay")) {
-    sourceTrack.connect(channelSplitter);
-    channelSplitter.connect(mergeMixed, 0, 0);
-    channelSplitter.connect(mergeMixed, 1, 1);
-    channelSplitter.connect(mergeUnmixed, 2, 0);
-    channelSplitter.connect(mergeUnmixed, 3, 1);
-    channelSplitter.connect(mergeUnmixed, 4, 2);
-    channelSplitter.connect(mergeUnmixed, 5, 3);
-    mergeMixed.connect(mixedGain);
-    mergeUnmixed.connect(unmixedGain);
-    mixedGain.connect(finalMix, 0, 0);
-    unmixedGain.connect(finalMix, 0, 1);
-    finalMix.connect(audioContext.destination);
     audioElement.play();
     progressLoop = setInterval(updateProgressBar, 64);
   } else {
