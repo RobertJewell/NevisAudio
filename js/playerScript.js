@@ -17,40 +17,36 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
-const channelSplitter = audioContext.createChannelSplitter(4);
+const channelSplitter = audioContext.createChannelSplitter(6);
 const mergeMixed = audioContext.createChannelMerger(2);
 const mergeUnmixed = audioContext.createChannelMerger(2);
 const mixedGain = audioContext.createGain();
 const unmixedGain = audioContext.createGain();
-const finalMix = audioContext.createChannelMerger();
+// const finalMix = audioContext.createChannelMerger(2);
 
 //Routing
-// sourceTrack.connect(channelSplitter);
-// channelSplitter.connect(mergeMixed, 0, 0);
-// channelSplitter.connect(mergeMixed, 1, 1);
-// channelSplitter.connect(mergeUnmixed, 2, 0);
-// channelSplitter.connect(mergeUnmixed, 3, 1);
-// channelSplitter.connect(mergeUnmixed, 4, 2);
-// channelSplitter.connect(mergeUnmixed, 5, 3);
-// mergeMixed.connect(mixedGain);
-// mergeUnmixed.connect(unmixedGain);
-// mixedGain.connect(finalMix, 0, 0);
-// unmixedGain.connect(finalMix, 0, 1);
-// finalMix.connect(audioContext.destination);
+sourceTrack.connect(channelSplitter);
+channelSplitter.connect(mergeMixed, 0, 1);
+channelSplitter.connect(mergeMixed, 1, 0);
+channelSplitter.connect(mergeUnmixed, 2, 0);
+channelSplitter.connect(mergeUnmixed, 3, 1);
+channelSplitter.connect(mergeUnmixed, 4, 1);
+channelSplitter.connect(mergeUnmixed, 5, 0);
+mergeMixed.connect(mixedGain);
+mergeUnmixed.connect(unmixedGain);
+mixedGain.connect(audioContext.destination);
+unmixedGain.connect(audioContext.destination);
 
 function connect() {
   sourceTrack.connect(channelSplitter);
   channelSplitter.connect(mergeMixed, 0, 0);
-  // channelSplitter.connect(mergeMixed, 1, 1);
-  // channelSplitter.connect(mergeUnmixed, 2, 0);
-  // channelSplitter.connect(mergeUnmixed, 3, 1);
-  // channelSplitter.connect(mergeUnmixed, 4, 0);
-  // channelSplitter.connect(mergeUnmixed, 5, 1);
+  channelSplitter.connect(mergeMixed, 1, 1);
+  channelSplitter.connect(mergeUnmixed, 2, 0);
+  channelSplitter.connect(mergeUnmixed, 3, 1);
   mergeMixed.connect(mixedGain);
   mergeUnmixed.connect(unmixedGain);
-  mixedGain.connect(finalMix, 0, 0);
-  unmixedGain.connect(finalMix, 0, 0);
-  finalMix.connect(audioContext.destination);
+  mixedGain.connect(audioContext.destination);
+  unmixedGain.connect(audioContext.destination);
 }
 
 function disconnect() {
@@ -60,7 +56,6 @@ function disconnect() {
   mergeUnmixed.disconnect();
   mixedGain.disconnect();
   unmixedGain.disconnect();
-  finalMix.disconnect();
 }
 
 //Set initial gain
@@ -112,7 +107,7 @@ mixButton.addEventListener("click", function () {
 
 unmixButton.addEventListener("click", function () {
   mixToggleBG.classList.remove("mixButton__bg--active");
-  mixedGain.gain.value = 0.5;
+  mixedGain.gain.value = 0;
   unmixedGain.gain.value = 1;
 });
 
