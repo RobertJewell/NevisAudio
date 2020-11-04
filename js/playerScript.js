@@ -6,7 +6,6 @@ let audioFiles = {
   track4: "audioFiles/fallen_house--i_disappear.mp4",
 };
 
-
 /* 
 ----------------
 VARIABLES
@@ -18,11 +17,11 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
-const channelSplitter = audioContext.createChannelSplitter(4)
-const mergeMixed = audioContext.createChannelMerger(2)
-const mergeUnmixed = audioContext.createChannelMerger(2)
-const mixedGain = audioContext.createGain()
-const unmixedGain = audioContext.createGain()
+const channelSplitter = audioContext.createChannelSplitter(6);
+const mergeMixed = audioContext.createChannelMerger(2);
+const mergeUnmixed = audioContext.createChannelMerger(2);
+const mixedGain = audioContext.createGain();
+const unmixedGain = audioContext.createGain();
 
 //Routing
 sourceTrack.connect(channelSplitter);
@@ -30,15 +29,14 @@ channelSplitter.connect(mergeMixed, 0, 0);
 channelSplitter.connect(mergeMixed, 1, 1);
 channelSplitter.connect(mergeUnmixed, 2, 0);
 channelSplitter.connect(mergeUnmixed, 3, 1);
-mergeMixed.connect(mixedGain)
-mergeUnmixed.connect(unmixedGain)
-mixedGain.connect(audioContext.destination)
-unmixedGain.connect(audioContext.destination)
+mergeMixed.connect(mixedGain);
+mergeUnmixed.connect(unmixedGain);
+mixedGain.connect(audioContext.destination);
+unmixedGain.connect(audioContext.destination);
 
 //Set initial gain
-unmixedGain.gain.value = 0
-mixedGain.gain.value = 1
-
+unmixedGain.gain.value = 0;
+mixedGain.gain.value = 1;
 
 //Pull the list of tracks from the DOM
 const collectTracks = document.getElementsByClassName("trackSelector");
@@ -79,14 +77,14 @@ playPause.addEventListener("click", function () {
 //Mix button
 mixButton.addEventListener("click", function () {
   mixToggleBG.classList.add("mixButton__bg--active");
-  unmixedGain.gain.value = 0
-  mixedGain.gain.value = 1
+  unmixedGain.gain.value = 0;
+  mixedGain.gain.value = 1;
 });
 
 unmixButton.addEventListener("click", function () {
   mixToggleBG.classList.remove("mixButton__bg--active");
-  mixedGain.gain.value = 0
-  unmixedGain.gain.value = 1
+  mixedGain.gain.value = 0;
+  unmixedGain.gain.value = 1;
 });
 
 //reset play/pause on track end
@@ -130,7 +128,7 @@ function resetPlayPause() {
 function playPauseTrack() {
   if (audioContext.state === "suspended") {
     audioContext.resume();
-    alert(channelSplitter)
+    alert(channelSplitter);
   }
   if (playButton.classList.contains("noDisplay")) {
     audioElement.play();
@@ -148,7 +146,6 @@ function isMixed() {
   }
   return false;
 }
-
 
 // update css postion of the progress bar
 function updateProgressBar() {
