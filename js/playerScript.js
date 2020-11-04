@@ -16,10 +16,21 @@ VARIABLES
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
+audioElement.channelCountMode = "explicit";
+audioElement.channelCount = 4;
+audioElement.channelInterpretation = "discrete";
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
+sourceTrack.channelCountMode = "explicit";
+sourceTrack.channelCount = 4;
+sourceTrack.channelInterpretation = "discrete";
 const channelSplitter = audioContext.createChannelSplitter(6);
+channelSplitter.channelCountMode = "explicit";
+channelSplitter.channelCount = 6;
+channelSplitter.channelInterpretation = "discrete";
 const mergeMixed = audioContext.createChannelMerger(2);
+mergeMixed.channelInterpretation = "discrete";
 const mergeUnmixed = audioContext.createChannelMerger(2);
+mergeUnmixed.channelInterpretation = "discrete";
 const mixedGain = audioContext.createGain();
 const unmixedGain = audioContext.createGain();
 
