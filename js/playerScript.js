@@ -17,12 +17,12 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const audioElement = document.getElementById("audioPlayer");
 const sourceTrack = audioContext.createMediaElementSource(audioElement);
-const channelSplitter = audioContext.createChannelSplitter(6);
+const channelSplitter = audioContext.createChannelSplitter(4);
 const mergeMixed = audioContext.createChannelMerger(2);
-const mergeUnmixed = audioContext.createChannelMerger(4);
+const mergeUnmixed = audioContext.createChannelMerger(2);
 const mixedGain = audioContext.createGain();
 const unmixedGain = audioContext.createGain();
-const finalMix = audioContext.createChannelMerger(2);
+const finalMix = audioContext.createChannelMerger();
 
 //Routing
 // sourceTrack.connect(channelSplitter);
@@ -49,7 +49,7 @@ function connect() {
   mergeMixed.connect(mixedGain);
   mergeUnmixed.connect(unmixedGain);
   mixedGain.connect(finalMix, 0, 0);
-  unmixedGain.connect(finalMix, 0, 1);
+  unmixedGain.connect(finalMix, 0, 0);
   finalMix.connect(audioContext.destination);
 }
 
