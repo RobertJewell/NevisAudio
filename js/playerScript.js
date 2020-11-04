@@ -25,27 +25,27 @@ const unmixedGain = audioContext.createGain();
 const finalMix = audioContext.createChannelMerger(2);
 
 //Routing
-sourceTrack.connect(channelSplitter);
-channelSplitter.connect(mergeMixed, 0, 0);
-channelSplitter.connect(mergeMixed, 1, 1);
-channelSplitter.connect(mergeUnmixed, 2, 0);
-channelSplitter.connect(mergeUnmixed, 3, 1);
-channelSplitter.connect(mergeUnmixed, 4, 2);
-channelSplitter.connect(mergeUnmixed, 5, 3);
-mergeMixed.connect(mixedGain);
-mergeUnmixed.connect(unmixedGain);
-mixedGain.connect(finalMix, 0, 0);
-unmixedGain.connect(finalMix, 0, 1);
-finalMix.connect(audioContext.destination);
+// sourceTrack.connect(channelSplitter);
+// channelSplitter.connect(mergeMixed, 0, 0);
+// channelSplitter.connect(mergeMixed, 1, 1);
+// channelSplitter.connect(mergeUnmixed, 2, 0);
+// channelSplitter.connect(mergeUnmixed, 3, 1);
+// channelSplitter.connect(mergeUnmixed, 4, 2);
+// channelSplitter.connect(mergeUnmixed, 5, 3);
+// mergeMixed.connect(mixedGain);
+// mergeUnmixed.connect(unmixedGain);
+// mixedGain.connect(finalMix, 0, 0);
+// unmixedGain.connect(finalMix, 0, 1);
+// finalMix.connect(audioContext.destination);
 
 function connect() {
   sourceTrack.connect(channelSplitter);
   channelSplitter.connect(mergeMixed, 0, 0);
-  channelSplitter.connect(mergeMixed, 1, 1);
-  channelSplitter.connect(mergeUnmixed, 2, 0);
-  channelSplitter.connect(mergeUnmixed, 3, 1);
-  channelSplitter.connect(mergeUnmixed, 4, 2);
-  channelSplitter.connect(mergeUnmixed, 5, 3);
+  // channelSplitter.connect(mergeMixed, 1, 1);
+  // channelSplitter.connect(mergeUnmixed, 2, 0);
+  // channelSplitter.connect(mergeUnmixed, 3, 1);
+  // channelSplitter.connect(mergeUnmixed, 4, 0);
+  // channelSplitter.connect(mergeUnmixed, 5, 1);
   mergeMixed.connect(mixedGain);
   mergeUnmixed.connect(unmixedGain);
   mixedGain.connect(finalMix, 0, 0);
@@ -55,11 +55,6 @@ function connect() {
 
 function disconnect() {
   sourceTrack.disconnect();
-  channelSplitter.disconnect();
-  channelSplitter.disconnect();
-  channelSplitter.disconnect();
-  channelSplitter.disconnect();
-  channelSplitter.disconnect();
   channelSplitter.disconnect();
   mergeMixed.disconnect();
   mergeUnmixed.disconnect();
