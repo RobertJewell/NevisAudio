@@ -128,7 +128,6 @@ function resetPlayPause() {
 function playPauseTrack() {
   if (audioContext.state === "suspended") {
     audioContext.resume();
-    alert(channelSplitter);
   }
   if (playButton.classList.contains("noDisplay")) {
     audioElement.play();
