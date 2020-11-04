@@ -20,9 +20,9 @@ const sourceTrack = audioContext.createMediaElementSource(audioElement);
 const channelSplitter = audioContext.createChannelSplitter(6);
 const mergeMixed = audioContext.createChannelMerger(2);
 const mergeUnmixed = audioContext.createChannelMerger(2);
-const mixedGain = audioContext.createGain();
-const unmixedGain = audioContext.createGain();
-// const finalMix = audioContext.createChannelMerger(2);
+const mixedGain = audioContext.createGain(2);
+const unmixedGain = audioContext.createGain(2);
+const finalMix = audioContext.createChannelMerger(2);
 
 //Routing
 sourceTrack.connect(channelSplitter);
@@ -34,21 +34,24 @@ channelSplitter.connect(mergeUnmixed, 4, 1);
 channelSplitter.connect(mergeUnmixed, 5, 0);
 mergeMixed.connect(mixedGain);
 mergeUnmixed.connect(unmixedGain);
-mixedGain.connect(audioContext.destination);
-unmixedGain.connect(audioContext.destination);
+mixedGain.connect(finalMix, 0, 0);
+mixedGain.connect(finalMix, 0, 1);
+unmixedGain.connect(finalMix);
+finalMix.connect(audioContext.destination);
 
 function connect() {
   sourceTrack.connect(channelSplitter);
-  channelSplitter.connect(mergeMixed, 0, 0);
-  channelSplitter.connect(mergeMixed, 0, 0);
-  channelSplitter.connect(mergeUnmixed, 1, 0);
-  channelSplitter.connect(mergeUnmixed, 3, 0);
-  channelSplitter.connect(mergeUnmixed, 4, 0);
+  channelSplitter.connect(mergeMixed, 0, 1);
+  channelSplitter.connect(mergeMixed, 1, 0);
+  channelSplitter.connect(mergeUnmixed, 2, 0);
+  channelSplitter.connect(mergeUnmixed, 3, 1);
+  channelSplitter.connect(mergeUnmixed, 4, 1);
   channelSplitter.connect(mergeUnmixed, 5, 0);
   mergeMixed.connect(mixedGain);
   mergeUnmixed.connect(unmixedGain);
-  mixedGain.connect(audioContext.destination);
-  unmixedGain.connect(audioContext.destination);
+  mixedGain.connect(finalMix);
+  unmixedGain.connect(finalMix);
+  finalMix.connect(audioContext.destination);
 }
 
 function disconnect() {
