@@ -91,6 +91,14 @@ body {
   display: flex;
 }
 
+a {
+  color: darkorange;
+}
+
+.privacy__header {
+  margin-bottom: 0.5rem;
+}
+
 button {
   display: inline-block;
   border: none;
@@ -1022,6 +1030,26 @@ select:-webkit-autofill:focus {
 }
 
 .container__thanks a {
+  margin-top: 2rem;
+}
+
+.container__left {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: left;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  padding-top: 4rem;
+}
+
+.container__left p {
+  margin-bottom: 1rem;
+}
+
+.container__left a {
   margin-top: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
