@@ -1,505 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Nevis Audio can provide you with professional-sounding mixes for your songs, that make them stand out from the crowd."
-    />
-    <title>Nevis Audio</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/aos.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-135901005-1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Nevis Audio can provide you with professional-sounding mixes for your songs, that make them stand out from the crowd."
+		/>
+		<title>Nevis Audio</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="styles/style.css" />
+		<link rel="stylesheet" href="styles/aos.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
 
-      gtag("config", "UA-135901005-1");
-    </script>
-    <!-- Global site tag (gtag.js) - Google Ads: 511639322 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-511639322"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "AW-511639322");
-    </script>
-    <!-- Facebook Pixel Code -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", "1639183409427850");
-      fbq("track", "PageView");
-      fbq("track", "ViewContent");
-      fbq("track", "SubmitApplication");
-    </script>
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        src="https://www.facebook.com/tr?id=1639183409427850&ev=PageView
+		<!-- cookie consent -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+		/>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=UA-135901005-1"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "UA-135901005-1");
+		</script>
+		<!-- Global site tag (gtag.js) - Google Ads: 511639322 -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=AW-511639322"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "AW-511639322");
+		</script>
+		<!-- Facebook Pixel Code -->
+		<script>
+			!(function (f, b, e, v, n, t, s) {
+				if (f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod
+						? n.callMethod.apply(n, arguments)
+						: n.queue.push(arguments);
+				};
+				if (!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = "2.0";
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s);
+			})(
+				window,
+				document,
+				"script",
+				"https://connect.facebook.net/en_US/fbevents.js"
+			);
+			fbq("init", "1639183409427850");
+			fbq("track", "PageView");
+			fbq("track", "ViewContent");
+			fbq("track", "SubmitApplication");
+		</script>
+		<noscript>
+			<img
+				height="1"
+				width="1"
+				src="https://www.facebook.com/tr?id=1639183409427850&ev=PageView
   &noscript=1"
-      />
-    </noscript>
-    <!-- End Facebook Pixel Code -->
-  </head>
+			/>
+		</noscript>
+		<!-- End Facebook Pixel Code -->
+	</head>
 
-  <body>
-    <!-- 
+	<body>
+		<!-- 
   <img src="imgs/decoration/TopLeftCurve.svg" class="decoration decoration__topLeft">
   <img test src="imgs/decoration/TopLeftCurve.svg" class="decoration decoration__topLeft decoration__glow">
  -->
-    <section class="landing">
-      <img src="./imgs/logo/Nevis_logo.svg" alt="logo" class="logo" />
+		<section class="landing">
+			<img src="./imgs/logo/Nevis_logo.svg" alt="logo" class="logo" />
 
-      <div class="container landing__content">
-        <div class="decorationContainer__mic">
-          <picture class="decoration__mic">
-            <source
-              type="image/webp"
-              srcset="./imgs/decoration/mic-cutout.webp"
-            />
-            <source
-              type="image/png"
-              srcset="./imgs/decoration/mic-cutout.png"
-            />
-            <img
-              src="./imgs/decoration/mic-cutout.png"
-              alt="microphone"
-              class="decoration__mic"
-            />
-          </picture>
-        </div>
-        <h1
-          class="landing__bannerText"
-          data-aos="fade-zoom-in"
-          data-aos-duration="2000"
-        >
-          MIXES THAT
-          <br />GET YOU <br class="mobile-break" />
-          <div class="featureWordWrapper">
-            <span
-              class="landing__bannerText--featureWord landing__bannerText--changeWord"
-            >
-            </span>
-            <span class="landing__bannerText--featureWord">NOTICED</span>
-          </div>
-        </h1>
-        <span class="mainCTO">
-          <button data-modal-target="#modal" class="btn__cto">
-            Request a Free Mix Sample
-          </button>
-        </span>
-        <svg
-          viewBox="0 0 800 600"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          xml:space="preserve"
-          xmlns:serif="http://www.serif.com/"
-          style="
-            fill-rule: evenodd;
-            clip-rule: evenodd;
-            stroke-linejoin: round;
-            stroke-miterlimit: 2;
-          "
-          class="landing__img--downarrow fade-in"
-        >
-          <path
-            d="M87.203,120.395C87.203,120.395 244.105,225.584 330.542,283.533C372.562,311.703 427.431,311.721 469.468,283.577C556.368,225.397 714.617,119.449 714.617,119.449C726.083,111.772 729.159,96.232 721.483,84.766C713.807,73.301 698.266,70.224 686.801,77.901C686.801,77.901 528.552,183.849 441.652,242.028C416.456,258.897 383.57,258.887 358.385,242.002C271.948,184.054 115.046,78.864 115.046,78.864C103.585,71.181 88.042,74.247 80.359,85.708C72.676,97.169 75.742,112.711 87.203,120.395Z"
-          />
-          <g transform="matrix(1,0,0,1,-0.916571,201.325)">
-            <path
-              d="M87.203,120.395C87.203,120.395 244.105,225.584 330.542,283.533C372.562,311.703 427.431,311.721 469.468,283.577C556.368,225.397 714.617,119.449 714.617,119.449C726.083,111.772 729.159,96.232 721.483,84.766C713.807,73.301 698.266,70.224 686.801,77.901C686.801,77.901 528.552,183.849 441.652,242.028C416.456,258.897 383.57,258.887 358.385,242.002C271.948,184.054 115.046,78.864 115.046,78.864C103.585,71.181 88.042,74.247 80.359,85.708C72.676,97.169 75.742,112.711 87.203,120.395Z"
-            />
-          </g>
-        </svg>
-      </div>
-      <!-- <div class="decorationContainer__right">
+			<div class="container landing__content">
+				<div class="decorationContainer__mic">
+					<picture class="decoration__mic">
+						<source
+							type="image/webp"
+							srcset="./imgs/decoration/mic-cutout.webp"
+						/>
+						<source
+							type="image/png"
+							srcset="./imgs/decoration/mic-cutout.png"
+						/>
+						<img
+							src="./imgs/decoration/mic-cutout.png"
+							alt="microphone"
+							class="decoration__mic"
+						/>
+					</picture>
+				</div>
+				<h1
+					class="landing__bannerText"
+					data-aos="fade-zoom-in"
+					data-aos-duration="2000"
+				>
+					MIXES THAT
+					<br />GET YOU <br class="mobile-break" />
+					<div class="featureWordWrapper">
+						<span
+							class="landing__bannerText--featureWord landing__bannerText--changeWord"
+						>
+						</span>
+						<span class="landing__bannerText--featureWord">NOTICED</span>
+					</div>
+				</h1>
+				<span class="mainCTO">
+					<button data-modal-target="#modal" class="btn__cto">
+						Request a Free Mix Sample
+					</button>
+				</span>
+				<svg
+					viewBox="0 0 800 600"
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					xml:space="preserve"
+					xmlns:serif="http://www.serif.com/"
+					style="
+						fill-rule: evenodd;
+						clip-rule: evenodd;
+						stroke-linejoin: round;
+						stroke-miterlimit: 2;
+					"
+					class="landing__img--downarrow fade-in"
+				>
+					<path
+						d="M87.203,120.395C87.203,120.395 244.105,225.584 330.542,283.533C372.562,311.703 427.431,311.721 469.468,283.577C556.368,225.397 714.617,119.449 714.617,119.449C726.083,111.772 729.159,96.232 721.483,84.766C713.807,73.301 698.266,70.224 686.801,77.901C686.801,77.901 528.552,183.849 441.652,242.028C416.456,258.897 383.57,258.887 358.385,242.002C271.948,184.054 115.046,78.864 115.046,78.864C103.585,71.181 88.042,74.247 80.359,85.708C72.676,97.169 75.742,112.711 87.203,120.395Z"
+					/>
+					<g transform="matrix(1,0,0,1,-0.916571,201.325)">
+						<path
+							d="M87.203,120.395C87.203,120.395 244.105,225.584 330.542,283.533C372.562,311.703 427.431,311.721 469.468,283.577C556.368,225.397 714.617,119.449 714.617,119.449C726.083,111.772 729.159,96.232 721.483,84.766C713.807,73.301 698.266,70.224 686.801,77.901C686.801,77.901 528.552,183.849 441.652,242.028C416.456,258.897 383.57,258.887 358.385,242.002C271.948,184.054 115.046,78.864 115.046,78.864C103.585,71.181 88.042,74.247 80.359,85.708C72.676,97.169 75.742,112.711 87.203,120.395Z"
+						/>
+					</g>
+				</svg>
+			</div>
+			<!-- <div class="decorationContainer__right">
       <img src="imgs/decoration/BottomRightCurve.svg" class="decoration decoration__bottomRight">
       <img src="imgs/decoration/BottomRightCurve.svg" class="decoration decoration__bottomRight decoration__glow">
     </div> -->
-    </section>
-    <section
-      class="portfolio"
-      data-aos="fade-up"
-      data-aos-offset="200"
-      data-aos-duration="600"
-    >
-      <div class="container section__feature">
-        <div class="player">
-          <h2 class="sectionHeader">Mix Portfolio</h2>
-          <div class="switches">
-            <button id="playerControls__button--playPause" aria-label="Play">
-              <img
-                src="imgs/audioPlayer/playButton.svg"
-                id="playerControls__play"
-                alt="play"
-              />
-              <img
-                src="imgs/audioPlayer/pauseButton.svg"
-                id="playerControls__pause"
-                class="noDisplay"
-                alt="pause"
-              />
-            </button>
-            <div class="mixToggle">
-              <button id="playerControls__button--unmixed" class="mixButton">
-                Unmixed
-              </button>
-              <button id="playerControls__button--mixed" class="mixButton">
-                Mixed
-              </button>
+		</section>
+		<section
+			class="portfolio"
+			data-aos="fade-up"
+			data-aos-offset="200"
+			data-aos-duration="600"
+		>
+			<div class="container section__feature">
+				<div class="player">
+					<h2 class="sectionHeader">Mix Portfolio</h2>
+					<div class="switches">
+						<button id="playerControls__button--playPause" aria-label="Play">
+							<img
+								src="imgs/audioPlayer/playButton.svg"
+								id="playerControls__play"
+								alt="play"
+							/>
+							<img
+								src="imgs/audioPlayer/pauseButton.svg"
+								id="playerControls__pause"
+								class="noDisplay"
+								alt="pause"
+							/>
+						</button>
+						<div class="mixToggle">
+							<button id="playerControls__button--unmixed" class="mixButton">
+								Unmixed
+							</button>
+							<button id="playerControls__button--mixed" class="mixButton">
+								Mixed
+							</button>
 
-              <div
-                id="playerControls__button--bg"
-                class="mixButton__bg mixButton__bg--active"
-              ></div>
-            </div>
-          </div>
-          <div class="progressBar--container" id="progressBar--container">
-            <div class="progressBar">
-              <div class="progressBar__playtime" id="progressBar">
-                <div class="progressBar__playtimeBG"></div>
-              </div>
-            </div>
-          </div>
-          <div id="playerControls">
-            <audio id="audioPlayer__mixed" preload="audio">
-              <source
-                src="audioFiles/mixed/cbr-the_taboos--innovative_thinking--mixed.mp3"
-                type="audio/mp3"
-                id="audioPlayer__track"
-              />
-            </audio>
-            <audio id="audioPlayer__unmixed" preload="audio" muted>
-              <source
-                src="audioFiles/unmixed/cbr-the_taboos--innovative_thinking--unmixed.mp3"
-                type="audio/mp3"
-                id="audioPlayer__unmixedTrack"
-              />
-            </audio>
-          </div>
-          <div class="playerTracks">
-            <button class="trackSelector trackSelector__active" id="track1">
-              The Taboos - Innovative Thinking
-            </button>
-            <hr />
-            <button class="trackSelector" id="track2">
-              Andrew McEwan - Wait
-            </button>
-            <hr />
-            <button class="trackSelector" id="track3">
-              Beefywink - Feel Me
-            </button>
-            <hr />
-            <button class="trackSelector" id="track4">
-              Fallen House - I Disappear
-            </button>
-            <hr />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="plan">
-      <div
-        class="decorationContainer__plan"
-        data-aos="fade-zoom-in"
-        data-aos-delay="1000"
-        data-aos-duration="800"
-      >
-        <img
-          src="imgs/decoration/stepsCurve.svg"
-          loading="lazy"
-          class="decoration decoration__plan"
-          alt="decorationLines"
-        />
-        <img
-          src="imgs/decoration/stepsCurve.svg"
-          loading="lazy"
-          class="decoration decoration__plan decoration__glow"
-          alt="decorationLines"
-        />
-      </div>
-      <div class="container">
-        <h2 class="sectionHeader">The Pro Sound Plan</h2>
-        <div class="steps">
-          <div
-            class="card steps__step1"
-            data-aos="fade-up"
-            data-aos-duration="600"
-          >
-            <div class="card card__inner">
-              <h3>Step 1</h3>
-              <p>Get In Touch.</p>
-              <button data-modal-target="#modal" class="btn__cto">
-                Free Mix Sample
-              </button>
-            </div>
-          </div>
-          <div
-            class="card steps__step2"
-            data-aos="fade-up"
-            data-aos-delay="250"
-            data-aos-duration="600"
-          >
-            <div class="card card__inner">
-              <h3>Step 2</h3>
-              <p>
-                We'll discuss how to send over your song for a Free Mix Sample.
-              </p>
-            </div>
-          </div>
-          <div
-            class="card steps__step3"
-            data-aos="fade-up"
-            data-aos-delay="500"
-            data-aos-duration="600"
-          >
-            <div class="card card__inner">
-              <h3>Step 3</h3>
-              <p>You'll receive your Free Mix Sample within 1 week.</p>
-              <p>Let's make your best song yet.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="about">
-      <div
-        class="container section__feature"
-        data-aos="fade-up"
-        data-aos-offset="200"
-        data-aos-duration="600"
-      >
-        <div class="container__subcontainer">
-          <div class="about__text">
-            <h2 class="sectionHeader">About Nevis</h2>
-            <p class="about__text--info text__highlight">
-              Hi, I'm Joe Sage and I'm the mix engineer at the helm of Nevis
-              Audio.
-            </p>
-            <p class="about__text--info">
-              I help musicians get their music noticed, by providing them with
-              professional-sounding mixes for their songs, that make them stand
-              out from the crowd.
-            </p>
-            <p class="about__text--info">
-              Learning my trade by engineering for some of the UK's best
-              producers and I will provide the same professional quality sound
-              for your tracks.
-            </p>
-            <p class="about__text--info">
-              I have worked with artists from all over Europe and America to
-              help them develop their sound and maximize their potential. I can
-              help deliver those same results for your career.
-            </p>
-            <button data-modal-target="#modal" class="btn__cto">
-              Request a Free Mix Sample
-            </button>
-          </div>
-          <div class="about__image">
-            <picture loading="lazy" class="about__image--joe">
-              <source type="image/webp" srcset="imgs/people/JOE.webp" />
-              <source type="image/jpg" srcset="imgs/people/JOE.jpg" />
-              <img
-                class="about__image--joe"
-                src="imgs/people/JOE.jpg"
-                alt="Joe"
-              />
-            </picture>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="testimonials"
-      data-aos="fade-up"
-      data-aos-offset="200"
-      data-aos-duration="600"
-    >
-      <div class="container">
-        <h2 class="sectionHeader">Testimonials</h2>
-        <div class="testimonials__cards">
-          <div class="card">
-            <picture loading="lazy" class="card__img">
-              <source
-                type="image/webp"
-                srcset="./imgs/people/Testamonial_UrbanArchitects.webp"
-              />
-              <source
-                type="image/jpg"
-                srcset="./imgs/people/Testamonial_UrbanArchitects.jpg"
-              />
-              <img
-                src="./imgs/people/Testamonial_UrbanArchitects.jpg"
-                alt="UrbanArchitects"
-                class="card__img"
-              />
-            </picture>
+							<div
+								id="playerControls__button--bg"
+								class="mixButton__bg mixButton__bg--active"
+							></div>
+						</div>
+					</div>
+					<div class="progressBar--container" id="progressBar--container">
+						<div class="progressBar">
+							<div class="progressBar__playtime" id="progressBar">
+								<div class="progressBar__playtimeBG"></div>
+							</div>
+						</div>
+					</div>
+					<div id="playerControls">
+						<audio id="audioPlayer__mixed" preload="audio">
+							<source
+								src="audioFiles/mixed/cbr-the_taboos--innovative_thinking--mixed.mp3"
+								type="audio/mp3"
+								id="audioPlayer__track"
+							/>
+						</audio>
+						<audio id="audioPlayer__unmixed" preload="audio" muted>
+							<source
+								src="audioFiles/unmixed/cbr-the_taboos--innovative_thinking--unmixed.mp3"
+								type="audio/mp3"
+								id="audioPlayer__unmixedTrack"
+							/>
+						</audio>
+					</div>
+					<div class="playerTracks">
+						<button class="trackSelector trackSelector__active" id="track1">
+							The Taboos - Innovative Thinking
+						</button>
+						<hr />
+						<button class="trackSelector" id="track2">
+							Andrew McEwan - Wait
+						</button>
+						<hr />
+						<button class="trackSelector" id="track3">
+							Beefywink - Feel Me
+						</button>
+						<hr />
+						<button class="trackSelector" id="track4">
+							Fallen House - I Disappear
+						</button>
+						<hr />
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="plan">
+			<div
+				class="decorationContainer__plan"
+				data-aos="fade-zoom-in"
+				data-aos-delay="1000"
+				data-aos-duration="800"
+			>
+				<img
+					src="imgs/decoration/stepsCurve.svg"
+					loading="lazy"
+					class="decoration decoration__plan"
+					alt="decorationLines"
+				/>
+				<img
+					src="imgs/decoration/stepsCurve.svg"
+					loading="lazy"
+					class="decoration decoration__plan decoration__glow"
+					alt="decorationLines"
+				/>
+			</div>
+			<div class="container">
+				<h2 class="sectionHeader">The Pro Sound Plan</h2>
+				<div class="steps">
+					<div
+						class="card steps__step1"
+						data-aos="fade-up"
+						data-aos-duration="600"
+					>
+						<div class="card card__inner">
+							<h3>Step 1</h3>
+							<p>Get In Touch.</p>
+							<button data-modal-target="#modal" class="btn__cto">
+								Free Mix Sample
+							</button>
+						</div>
+					</div>
+					<div
+						class="card steps__step2"
+						data-aos="fade-up"
+						data-aos-delay="250"
+						data-aos-duration="600"
+					>
+						<div class="card card__inner">
+							<h3>Step 2</h3>
+							<p>
+								We'll discuss how to send over your song for a Free Mix Sample.
+							</p>
+						</div>
+					</div>
+					<div
+						class="card steps__step3"
+						data-aos="fade-up"
+						data-aos-delay="500"
+						data-aos-duration="600"
+					>
+						<div class="card card__inner">
+							<h3>Step 3</h3>
+							<p>You'll receive your Free Mix Sample within 1 week.</p>
+							<p>Let's make your best song yet.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="about">
+			<div
+				class="container section__feature"
+				data-aos="fade-up"
+				data-aos-offset="200"
+				data-aos-duration="600"
+			>
+				<div class="container__subcontainer">
+					<div class="about__text">
+						<h2 class="sectionHeader">About Nevis</h2>
+						<p class="about__text--info text__highlight">
+							Hi, I'm Joe Sage and I'm the mix engineer at the helm of Nevis
+							Audio.
+						</p>
+						<p class="about__text--info">
+							I help musicians get their music noticed, by providing them with
+							professional-sounding mixes for their songs, that make them stand
+							out from the crowd.
+						</p>
+						<p class="about__text--info">
+							Learning my trade by engineering for some of the UK's best
+							producers and I will provide the same professional quality sound
+							for your tracks.
+						</p>
+						<p class="about__text--info">
+							I have worked with artists from all over Europe and America to
+							help them develop their sound and maximize their potential. I can
+							help deliver those same results for your career.
+						</p>
+						<button data-modal-target="#modal" class="btn__cto">
+							Request a Free Mix Sample
+						</button>
+					</div>
+					<div class="about__image">
+						<picture loading="lazy" class="about__image--joe">
+							<source type="image/webp" srcset="imgs/people/JOE.webp" />
+							<source type="image/jpg" srcset="imgs/people/JOE.jpg" />
+							<img
+								class="about__image--joe"
+								src="imgs/people/JOE.jpg"
+								alt="Joe"
+							/>
+						</picture>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section
+			class="testimonials"
+			data-aos="fade-up"
+			data-aos-offset="200"
+			data-aos-duration="600"
+		>
+			<div class="container">
+				<h2 class="sectionHeader">Testimonials</h2>
+				<div class="testimonials__cards">
+					<div class="card">
+						<picture loading="lazy" class="card__img">
+							<source
+								type="image/webp"
+								srcset="./imgs/people/Testamonial_UrbanArchitects.webp"
+							/>
+							<source
+								type="image/jpg"
+								srcset="./imgs/people/Testamonial_UrbanArchitects.jpg"
+							/>
+							<img
+								src="./imgs/people/Testamonial_UrbanArchitects.jpg"
+								alt="UrbanArchitects"
+								class="card__img"
+							/>
+						</picture>
 
-            <h3 class="card__header">Urban Architects</h3>
-            <p class="quote">
-              Joe’s personal touch to work to the bands needs is awesome and
-              process of consulting/<wbr />booking a project with him is a
-              breeze. It’s a very proud moment as a songwriter to hear something
-              you imagined in your head come out of a pair of speakers and Joe
-              helped us achieve just that.
-            </p>
-            <p class="quotemarks">"</p>
-          </div>
-          <div class="card">
-            <picture class="card__img" loading="lazy">
-              <source
-                type="image/webp"
-                srcset="./imgs/people/Testamonial_McEwan.webp"
-              />
-              <source
-                type="image/jpg"
-                srcset="./imgs/people/Testamonial_McEwan.png"
-              />
-              <img
-                src="./imgs/people/Testamonial_McEwan.png"
-                alt="McEwan"
-                class="card__img"
-              />
-            </picture>
-            <h3 class="card__header">Andrew McEwan</h3>
-            <p class="quote">
-              The band and I had such a great experience working with Joe. He
-              really did go the extra mile. That's what you want as a
-              songwriter, and he put the care and attention in throughout the
-              process. That is why I'm looking forward to working with Joe again
-              on my next recording.
-            </p>
-            <p class="quotemarks">"</p>
-          </div>
-          <div class="card">
-            <picture class="card__img" loading="lazy">
-              <source
-                type="image/webp"
-                srcset="./imgs/people/Testamonial_Taboos.webp"
-              />
-              <source
-                type="image/jpg"
-                srcset="./imgs/people/Testamonial_Taboos.jpg"
-              />
-              <img
-                src="./imgs/people/Testamonial_Taboos.jpg"
-                alt="Taboos"
-                class="card__img"
-              />
-            </picture>
-            <h3 class="card__header">The Taboos</h3>
-            <p class="quote">
-              We’d never hired a mix engineer remotely before but we found Joe
-              to have a friendly and professional nature, as well as being
-              really easy to work with. Joe gave us a much crispier, tighter
-              sound with a perfect level of polish.
-            </p>
-            <p class="quotemarks">"</p>
-          </div>
-        </div>
-        <div class="endButton">
-          <button data-modal-target="#modal" class="btn__cto ending">
-            Request a Free Mix Sample
-          </button>
-        </div>
-      </div>
-    </section>
-    <section class="modal" id="modal">
-      <button data-close-button class="close-button">&times;</button>
-      <div class="modal-body">
-        <form
-          name="contact_form"
-          id="contactForm"
-          action="https://submit-form.com/HRFxlw-ppFDmODw9yM4yP"
-        >
-          <input
-            type="hidden"
-            name="_redirect"
-            value="https://nevisaudio.com/formSubmissionPage.html"
-          />
-          <input
-            type="checkbox"
-            name="_honeypot"
-            style="display: none"
-            tabindex="-1"
-            autocomplete="off"
-          />
-          <label for="name" class="inputLabel">Your Name:</label>
-          <input type="text" name="name" id="name" class="inputBox" required />
+						<h3 class="card__header">Urban Architects</h3>
+						<p class="quote">
+							Joe’s personal touch to work to the bands needs is awesome and
+							process of consulting/<wbr />booking a project with him is a
+							breeze. It’s a very proud moment as a songwriter to hear something
+							you imagined in your head come out of a pair of speakers and Joe
+							helped us achieve just that.
+						</p>
+						<p class="quotemarks">"</p>
+					</div>
+					<div class="card">
+						<picture class="card__img" loading="lazy">
+							<source
+								type="image/webp"
+								srcset="./imgs/people/Testamonial_McEwan.webp"
+							/>
+							<source
+								type="image/jpg"
+								srcset="./imgs/people/Testamonial_McEwan.png"
+							/>
+							<img
+								src="./imgs/people/Testamonial_McEwan.png"
+								alt="McEwan"
+								class="card__img"
+							/>
+						</picture>
+						<h3 class="card__header">Andrew McEwan</h3>
+						<p class="quote">
+							The band and I had such a great experience working with Joe. He
+							really did go the extra mile. That's what you want as a
+							songwriter, and he put the care and attention in throughout the
+							process. That is why I'm looking forward to working with Joe again
+							on my next recording.
+						</p>
+						<p class="quotemarks">"</p>
+					</div>
+					<div class="card">
+						<picture class="card__img" loading="lazy">
+							<source
+								type="image/webp"
+								srcset="./imgs/people/Testamonial_Taboos.webp"
+							/>
+							<source
+								type="image/jpg"
+								srcset="./imgs/people/Testamonial_Taboos.jpg"
+							/>
+							<img
+								src="./imgs/people/Testamonial_Taboos.jpg"
+								alt="Taboos"
+								class="card__img"
+							/>
+						</picture>
+						<h3 class="card__header">The Taboos</h3>
+						<p class="quote">
+							We’d never hired a mix engineer remotely before but we found Joe
+							to have a friendly and professional nature, as well as being
+							really easy to work with. Joe gave us a much crispier, tighter
+							sound with a perfect level of polish.
+						</p>
+						<p class="quotemarks">"</p>
+					</div>
+				</div>
+				<div class="endButton">
+					<button data-modal-target="#modal" class="btn__cto ending">
+						Request a Free Mix Sample
+					</button>
+				</div>
+			</div>
+		</section>
+		<section class="modal" id="modal">
+			<button data-close-button class="close-button">&times;</button>
+			<div class="modal-body">
+				<form
+					name="contact_form"
+					id="contactForm"
+					action="https://submit-form.com/HRFxlw-ppFDmODw9yM4yP"
+				>
+					<input
+						type="hidden"
+						name="_redirect"
+						value="https://nevisaudio.com/formSubmissionPage.html"
+					/>
+					<input
+						type="checkbox"
+						name="_honeypot"
+						style="display: none"
+						tabindex="-1"
+						autocomplete="off"
+					/>
+					<label for="name" class="inputLabel">Your Name:</label>
+					<input type="text" name="name" id="name" class="inputBox" required />
 
-          <label for="email" class="inputLabel">Email Address:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            class="inputBox"
-            required
-          />
+					<label for="email" class="inputLabel">Email Address:</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						class="inputBox"
+						required
+					/>
 
-          <label for="message" class="inputLabel">Message:</label>
-          <textarea
-            name="message"
-            id="message"
-            class="inputBox inputBox__message"
-            required
-          ></textarea>
+					<label for="message" class="inputLabel">Message:</label>
+					<textarea
+						name="message"
+						id="message"
+						class="inputBox inputBox__message"
+						required
+					></textarea>
 
-          <input type="submit" value="Submit" class="inputButton btn__cto" />
-        </form>
-      </div>
-    </section>
-    <div id="overlay"></div>
-    <script src="js/formValidation.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/playerScript.js"></script>
-    <script>
-      AOS.init({
-        disable: "phone",
-      });
-    </script>
-    <script src="js/modal.js"></script>
-    <script src="js/textAnimation.js"></script>
-  </body>
+					<input type="submit" value="Submit" class="inputButton btn__cto" />
+				</form>
+			</div>
+		</section>
+		<div id="overlay"></div>
+		<script src="js/formValidation.js"></script>
+		<script src="js/aos.js"></script>
+		<script src="js/playerScript.js"></script>
+		<script>
+			AOS.init({
+				disable: "phone",
+			});
+		</script>
+		<script src="js/modal.js"></script>
+		<script src="js/textAnimation.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+			data-cfasync="false"
+		></script>
+		<!-- Cookie policy script -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+			data-cfasync="false"
+		></script>
+		<script>
+			window.cookieconsent.initialise({
+				palette: {
+					popup: {
+						background: "#13131f",
+					},
+					button: {
+						background: "#f97808",
+						text: "#ffffff",
+					},
+				},
+				theme: "classic",
+				position: "bottom-right",
+				type: "opt-in",
+				content: {
+					href: "https://nevisaudio.com/privacypolicy.html",
+				},
+			});
+		</script>
+	</body>
 </html>
